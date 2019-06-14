@@ -1,0 +1,340 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {#  base_refactor.css一定在第一个css外链  #}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.growl.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery-confirm.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{% static 'css/iget/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iget/jquery.growl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iget/jquery-confirm.css' %}">
+    {% block myCssLink %}{% endblock %}
+    {#    <script src="{% static 'js/messages_zh.js' %}" type="text/javascript"></script>#}
+</head>
+<body>
+<div id="global-Container">
+    {#  头部  #}
+    <header id="main-topHeader">
+        {#  顶部导航栏  #}
+        <div id="topNavBox">
+            <div id="topNav">
+                {#  打招呼  #}
+                <div id="topNavLeft">
+                    {% if request.user.is_authenticated %}
+                        您好，<span id="user_nickname">{{ request.user.nickname }}</span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <a class="logoutLink" href="{% url 'users:logout' %}">退出</a>
+                    {% else %}
+                        欢迎来到易得比价网
+                    {% endif %}
+                </div>
+                {#  用户功能导航栏  #}
+                <div id="topNavRight">
+                    <ul id="topNavList">
+                        {% if request.user.is_authenticated %}
+                            <li class="topNavItem"><a class="topNavItemLink" href="{% url 'users:user_info' %}">我的账号</a></li>
+                            <li class="navPipe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="topNavItem"><a class="topNavItemLink" href="{% url 'users:user_fav' %}">我的收藏</a></li>
+                            <li class="navPipe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="topNavItem"><a class="topNavItemLink" href="{% url 'users:user_msg' %}">我的消息(1)</a></li>
+                            <li class="navPipe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="topNavItem"><a class="topNavItemLink" href="#">新手帮助</a></li>
+                        {% else %}
+                            <li class="topNavItem"><a class="topNavItemLink" href="{% url 'users:login' %}">请登录</a></li>
+                            <li class="navPipe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="topNavItem"><a class="topNavItemLink" href="{% url 'users:register' %}">免费注册</a></li>
+                            <li class="navPipe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="topNavItem"><a class="topNavItemLink" href="#">新手帮助</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {#  logo, 搜索框, 二维码  #}
+        <div id="topLogo_Search_QRBox">
+            <div id="siteLogo">
+                <a href="{% url 'index' %}">
+                    <img id="logoImg" src="{% static 'media/system_default/eget_icon.png' %}" alt="www.eget.com">
+                </a>
+            </div>
+            <div id="topSearch">
+                <div id="topSearchBox">
+                    <form id="topSearchForm" action="{% url 'operations:search' %}" method="get">
+{#                        {% csrf_token %}#}
+                        <div id="skInput" title="请输入商品名称或型号">
+                            <input type="hidden" name="searchType" value="ordinary">
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="sort" value="default">
+                            <input id="searchKey" type="search" name="searchKey" placeholder="请输入商品名称或型号"
+                                   value="{{ searchKey }}" autocomplete="off">
+                        </div>
+                        <div id="skBtn">
+                            <input id="searchBtn" type="submit" value="搜索">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="qrCode">
+                <div id="qrCodeBox">
+                    <div id="qrText">
+                        扫码下载APP
+                    </div>
+                    <div id="qrImg">
+                        <img title="扫码下载APP" class="qrCodeImg" src="{% static 'media/system_default/QR_code.jpg' %}" alt="扫码下载APP">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {#  功能导航栏  #}
+    <nav id="main-funcNav">
+        <ul id="funcNavList">
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'index' %}">首页</a>
+            </li>
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'index' %}#popularFav">热门收藏</a>
+            </li>
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'index' %}#popularRec">热门推荐</a>
+            </li>
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'index' %}#popularViews">大家在看</a>
+            </li>
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'dataStatistics:allRankList' %}">排行榜</a>
+            </li>
+            <li class="funcNavItem">
+                <a class="funcNavItemLink" href="{% url 'index' %}">商城导航</a>
+            </li>
+        </ul>
+    </nav>
+
+    {#  中间部分  #}
+    {% block mainContent %}
+
+    {% endblock %}
+
+    {# 产品对比框 #}
+    <div id="prd_compare_box" hidden="hidden">
+        <div class="compare_head">
+            <div class="compare_title">产品对比</div>
+            <div class="compare_hidden_button" ><a id="hidden_compare">隐藏对比框</a></div>
+        </div>
+        <div class="compare_content">
+            <div class="compare_ul_box">
+                <ul class="compare_ul">
+                    <li class="comparePrdItem">
+                        <div class="img_box">
+                            <a target="_blank" href="">
+                                <img class="compare_prd_img" src="{% static 'media/system_default/default_compared_pc.png' %}" alt="">
+                            </a>
+                        </div>
+                        <table style="width: 183px;height: 120px;float: right;">
+                            <tr>
+                                <td colspan="2" style="height: 90px;">
+                                    <a target="_blank" class="compare_prd_title" href="">您可以继续添加对比产品</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="compare_prd_price" style="text-align: left;width: 50%;height: 30px;"></td>
+                                <td style="text-align: right;width: 50%;height: 30px;">
+                                    <a class="compare_prd_delete_link" name="">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="comparePrdItem">
+                        <div class="img_box">
+                            <a target="_blank" href="">
+                                <img class="compare_prd_img" src="{% static 'media/system_default/default_compared_pc.png' %}" alt="">
+                            </a>
+                        </div>
+                        <table style="width: 183px;height: 120px;float: right;">
+                            <tr>
+                                <td colspan="2" style="height: 90px;">
+                                    <a target="_blank" class="compare_prd_title" href="">您可以继续添加对比产品</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="compare_prd_price" style="text-align: left;width: 50%;height: 30px;"></td>
+                                <td style="text-align: right;width: 50%;height: 30px;">
+                                    <a class="compare_prd_delete_link" name="">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="comparePrdItem">
+                        <div class="img_box">
+                            <a target="_blank" href="">
+                                <img class="compare_prd_img" src="{% static 'media/system_default/default_compared_pc.png' %}" alt="">
+                            </a>
+                        </div>
+                        <table style="width: 183px;height: 120px;float: right;">
+                            <tr>
+                                <td colspan="2" style="height: 90px;">
+                                    <a target="_blank" class="compare_prd_title" href="">您可以继续添加对比产品</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="compare_prd_price" style="text-align: left;width: 50%;height: 30px;"></td>
+                                <td style="text-align: right;width: 50%;height: 30px;">
+                                    <a class="compare_prd_delete_link" name="">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="comparePrdItem">
+                        <div class="img_box">
+                            <a target="_blank" href="">
+                                <img class="compare_prd_img" src="{% static 'media/system_default/default_compared_pc.png' %}" alt="">
+                            </a>
+                        </div>
+                        <table style="width: 183px;height: 120px;float: right;">
+                            <tr>
+                                <td colspan="2" style="height: 90px;text-align: left;">
+                                    <a target="_blank" class="compare_prd_title" href="">您可以继续添加对比产品</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="compare_prd_price"
+                                    style="text-align: left;width: 50%;height: 30px;font-size: 15px;color: #E51106;"></td>
+                                <td style="text-align: right;width: 50%;height: 30px;font-size: 15px;">
+                                    <a class="compare_prd_delete_link" name="">删除</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+            <div class="compare_submit">
+                <table style="width: 75px;margin-top: 30px">
+                    <tr>
+                        <td style="width: 100%;height: 40px;">
+                            <input id="compare_submit" name="" style="width: 100%;height: 40px;background-color: #DF4100;" type="button" value="对比">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a id="delete_all_compare_prd">清空对比栏</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {# 回顶部 #}
+    <div id="back_to_top">
+        <a href="#">
+            <img id="to_top_img" width="30" height="30" src="{% static 'media/system_default/back_to_top_out.png' %}" alt="">
+        </a>
+    </div>
+    {#  尾部  #}
+    <footer id="main-footer">
+        {#  底部导航栏  #}
+        <div id="footNavBox">
+            <div id="footNavLeft">
+                <div id="footNavLeftBox">
+                    <div id="downApp">
+                        <div id="footQrImg">
+                            <img title="扫码下载APP" class="footQrCodeImg" src="{% static 'media/system_default/QR_code.jpg' %}" alt="扫码下载APP">
+                        </div>
+                        <div id="downInfo">
+                            <p id="downDesc">扫码下载APP</p>
+                            <div class="downLink_android"><a class="downLink" href="#" title="点击下载Android版">Android版</a></div>
+                            <div class="downLink_ios"><a class="downLink" href="#" title="点击下载iPhone版">iPhone版</a></div>
+                        </div>
+                    </div>
+                    <div id="siteDesc">高性价比商品导购</div>
+                </div>
+            </div>
+            <div id="footNavCenter">
+                <div id="footNavCenterBox">
+                    <div id="footNavCenterTitle">
+                        <span>何为易得比价网</span>
+                    </div>
+                    <div id="footNavCenterArticle">
+                        易得比价网是一个倡导理性消费的导购平台，我们的目标是让消费更透明，帮你找到高性价比的笔记本电脑。
+                    </div>
+                    <div id="footNavCenterMalls">
+                        合作商城：
+                        <a class="mallSite" href="http://www.jd.com/" target="_blank">京东</a>
+                        <a class="mallSite" href="http://www.tmall.com/" target="_blank">天猫</a>
+                        <a class="mallSite" href="http://www.kaola.com/" target="_blank">考拉</a>
+                        <a class="mallSite" href="http://www.dangdang.com/" target="_blank">当当</a>
+                        <a class="mallSite" href="http://www.gome.com/" target="_blank">国美</a>
+                        <a class="mallSite" href="http://www.suning.com/" target="_blank">苏宁</a>
+                        <a class="mallSite" href="http://www.amazon.com.cn/" target="_blank">亚马逊</a>
+                        <a class="mallSite" href="http://www.vip.com/" target="_blank">唯品会</a>
+                        <a class="mallSite" href="http://you.163.com/" target="_blank">网易严选</a>
+                        <a class="mallSite" href="http://www.yhd.com/" target="_blank">1号店</a>
+                        &nbsp;&nbsp;
+                        <a class="mallSite" href="#" target="_blank">更多>></a>
+                    </div>
+                </div>
+            </div>
+            <div id="footNavRight">
+                <div class="swhz">商务合作：</div>
+                <div class="hzItem">
+                    <a class="hzLink" href="#" target="_blank" style="color: #5a5a5a;">B2C商城入驻>></a>
+                </div>
+                <div class="hzItem">
+                    <a class="hzLink" href="#" target="_blank" style="color: #5a5a5a;">电商活动报名>></a>
+                </div>
+                <div class="hzItem">
+                    <a class="hzLink" href="#" target="_blank" style="color: #5a5a5a;">联系我们>></a>
+                </div>
+            </div>
+        </div>
+        <div id="copyRightBox">
+            <ul id="copyRightList">
+                <li class="copyRightItem">
+                    <span>@2019</span>
+                    <a class="copyRightItemLink" href="{% url 'index' %}" title="易得">易得</a>
+                    <span>版权所有</span>
+                </li>
+                <li class="navPipe">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li class="copyRightItem">
+                    <a class="copyRightItemLink" href="" title="关于我们">关于我们</a>
+                </li>
+                <li class="navPipe">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li class="copyRightItem">
+                    <a class="copyRightItemLink" href="" title="友情链接">友情链接</a>
+                </li>
+                <li class="navPipe">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li class="copyRightItem">
+                    <a class="copyRightItemLink" href="" title="湘ICP备01234567号">湘ICP备01234567号</a>
+                </li>
+                <li class="navPipe">&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li class="copyRightItem">
+                    <a class="copyRightItemLink" href="" title="湘网安备01234567890123号">湘网安备01234567890123号</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+{% block myJs %}
+    <script>
+        $(document).ready(function () {
+            $prd_compare_box = $("#prd_compare_box");
+            {#$hidden_compare = $("#hidden_compare");#}
+            $to_top_img = $("#to_top_img");
+            $to_top_img.mouseenter(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+            }).mouseLeave(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+            });
+            $("#hidden_compare").click(function () {
+                $prd_compare_box.hide();
+            });
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

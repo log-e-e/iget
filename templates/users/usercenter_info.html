@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/usercenter_info.css' %}">
+{% endblock %}
+
+{% block title %}我的账号——用户中心{% endblock %}
+
+{% block mainContent %}
+
+    <main id="main-content">
+        <div id="marginTopSep"></div>
+        <div id="contentContainer">
+            <div class="usercenterBox">
+                <div class="leftCategory">
+                    <ul class="categoryBox">
+                        <li class="categoryTitle">个人中心</li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_info' %}" style="color: red;">我的账号</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_fav' %}">我的收藏</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_views' %}">我的足迹</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_msg' %}">站内消息</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightContent">
+                    <div class="contentTitle">用户信息</div>
+                    <div class="contentInfo">
+                        <table class="headImgTable">
+                            <tr class="headImgLine">
+                                {% csrf_token %}
+                                <td class="labelTitle">
+                                    <label for="">头像</label>
+                                </td>
+                                <td class="headImgTd">
+                                    <img id="headImg" src="{{ MEDIA_URL }}{{ request.user.head_img }}"
+                                         alt="用户头像" title="点击修改头像">
+                                </td>
+                                <td class="chImgTd">
+                                    <input class="uploadAvatarBtn" id="uploadAvatarBtn" type="file"
+                                           name="uploadAvatarBtn" onchange="uploadImg()">
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="userInfoTable">
+                            <tr class="infoLine">
+                                {% csrf_token %}
+                                <td class="labelTitle">
+                                    <label for="nickname">昵称</label>
+                                </td>
+                                <td class="infoVal">
+                                    <input type="text" class="infoInput" id="nickname" name="nickname"
+                                           value="{{ request.user.nickname }}" title="点击修改昵称">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="infoLine">
+                                <td class="labelTitle">
+                                    <label>性别</label>
+                                </td>
+                                <td class="infoVal">
+                                    <div class="genderDiv">
+                                        <input type="radio" class="male" id="male" name="gender" value="male" title="点击修改性别"
+                                        {% if request.user.gender == 0 %}
+                                            checked="checked"
+                                        {% endif %}>
+                                        <label for="male">男</label>
+                                        &nbsp;&nbsp;
+                                        <input type="radio" id="female" name="gender" value="female" title="点击修改性别"
+                                        {% if request.user.gender == 1 %}
+                                            checked="checked"
+                                        {% endif %}>
+                                        <label for="female">女</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                            </tr>
+                        </table>
+                        <p class="userSafeHead">
+                            账号安全
+                        </p>
+                        <table class="userSafeTable">
+                            <tr class="infoLine">
+                                    <td class="labelTitle">
+                                        <label for="id_email">邮箱</label>
+                                    </td>
+                                    <td class="infoVal">
+                                        <input type="email" class="infoInput" id="id_email" value="{{ request.user.email }}" readonly="readonly">
+                                    </td>
+                                    <td class="chLinkTd">
+                                        <a id="chemail" href="{% url 'users:chemail' %}" target="_self" class="chemailLink" title="点击修改邮箱">修改邮箱</a>
+                                    </td>
+                                </tr>
+                                <tr class="infoLine">
+                                    <td class="labelTitle">
+                                        <label for="id_password">密码</label>
+                                    </td>
+                                    <td class="infoVal">
+                                        <input type="password" class="infoInput" id="id_password" value="-------------" readonly="readonly">
+                                    </td>
+                                    <td class="chLinkTd">
+                                        <a id="chpwd" href="{% url 'users:chpwd' %}" target="_self" class="chpwdLink" title="点击修改密码">修改密码</a>
+                                    </td>
+                                </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block myJs %}
+<script>
+    $(document).ready(function () {
+        $("#headImg").click(function () {
+            $("#uploadAvatarBtn").click();
+        });
+        {#监听用户昵称是否改变#}
+        var $nicknameInput = $("#nickname");
+        old_nickname = $nicknameInput.val();
+        new_nickname = old_nickname;
+        $nicknameInput.focusin(function () {
+            {#鼠标由pointer变成initial,并且选中全部文字#}
+            $("#nickname").css("cursor", "initial").select();
+        }).focusout(function () {
+            {#鼠标由pointer变成initial,并且选中全部文字#}
+            $nicknameInput.css("cursor", "pointer");
+            new_nickname = $nicknameInput.val();
+            if (new_nickname !== old_nickname) {
+                var formData = new FormData();
+                formData.append('nickname', new_nickname);
+                formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+                $.ajax({
+                    url: "{% url 'users:ajax_ch_nickname' %}",
+                    type: 'post',
+                    data: formData,
+                    dataType: 'json',
+                    async: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        {#alert(data.msg);#}
+                        if (data.completed === "true") {
+                            $.growl({title: "", message: data.msg});
+                        }
+                        else {
+                            $.growl.error({title: "", message: data.msg});
+                        }
+                    },
+                });
+                {#此处用于更新变量，修复在改变原有性别后再次修改时带来的bug（重复请求）#}
+                old_nickname = new_nickname;
+            }
+        });
+        {#监听用户性别是否改变#}
+        var $genderInput = $("input[name='gender']");
+        var old_gender = $genderInput.filter(":checked").val();
+        var new_gender = old_gender;
+        var $maleRadio = $("#male");
+        var $femaleRadio = $("#female");
+
+        $genderInput.click(function () {
+            new_gender = $genderInput.filter(":checked").val();
+            if (new_gender !== old_gender) {
+                var formData = new FormData();
+                formData.append('gender', new_gender);
+                formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+                $.ajax({
+                    url: "{% url 'users:ajax_ch_gender' %}",
+                    type: 'post',
+                    data: formData,
+                    dataType: 'json',
+                    async: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        {#alert(data.msg);#}
+                        if (data.completed === "true") {
+                            $.growl({title: "", message: data.msg});
+
+                            if (new_gender === 'male') {
+                                $maleRadio.attr("title", "");
+                                $femaleRadio.attr("title", "点击修改性别");
+                            }
+                            else if (new_gender === 'female') {
+                                $femaleRadio.attr("title", "");
+                                $maleRadio.attr("title", "点击修改性别");
+                            }
+                        }
+                        else {
+                            $.growl.error({title: "", message: data.msg});
+                        }
+                    },
+                });
+                {#此处用于更新变量，修复在改变原有性别后再次点击新性别时带来的bug（重复请求）#}
+                old_gender = new_gender;
+            }
+        });
+        {# 对比框 #}
+        $prd_compare_box = $("#prd_compare_box");
+        {# 隐藏对比框 #}
+        $("#hidden_compare").click(function () {
+                $prd_compare_box.hide();
+            });
+        {# 回顶部 #}
+        $to_top_img = $("#to_top_img");
+        $to_top_img.mouseenter(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+            }).mouseleave(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+        });
+    });
+    function uploadImg() {
+        var img_file = $("#uploadAvatarBtn")[0].files[0];
+        var reader_file = new FileReader();
+        reader_file.readAsDataURL(img_file);
+        reader_file.onload = function (ev) {
+            $("#headImg").attr("src", ev.target.result);
+            var formData = new FormData();
+            formData.append('img_name', img_file.name);
+            formData.append('img_file', img_file);
+            formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+
+            $.ajax({
+                url: "{% url 'users:ch_headimg' %}",
+                type: 'post',
+                dataType: 'json',
+                data: formData,
+                async: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.completed === "true") {
+                        $.growl({title: "", message: data.msg});
+                    }
+                    else {
+                        $.growl.error({title: "", message: data.msg});
+                    }
+                },
+            });
+        };
+    }
+</script>
+{% endblock %}

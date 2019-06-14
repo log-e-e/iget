@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 1000px;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    border-bottom: 1px #F3F2F3 solid;
+}
+#marginTopSep {
+    width: 100%;
+    height: 50px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 75%;
+    height: 500px;
+    background-color: #F3F2F3;
+    /*background-color: #dddddd;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.usercenterBox {
+    width: 100%;
+    height: 500px;
+    /*background-color: darkgray;*/
+    /*border-left: 2px #F3F2F3 solid;*/
+    /*border-right: 2px #F3F2F3 solid;*/
+    /*border-top: 1px gray solid;*/
+}
+.leftCategory {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: #dddddd;
+}
+.rightContent {
+    float: right;
+    width: 79%;
+    height: 100%;
+    background-color: #fff;
+}
+/*中间内容容器基础布局 end*/
+
+/*leftCategory详细设计 start*/
+.categoryBox {
+    display: block;
+}
+.categoryTitle {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #444;
+}
+.categoryItem, .categoryItemLink {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #5A5A5A;
+}
+.categoryItemLink:hover {
+    color: #E51106;
+}
+/*leftCategory详细设计 end*/
+
+/*rightContent详细设计 start*/
+.contentTitle {
+    width: 98%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: left;
+    color: #DF4100;
+    /*background-color: lightskyblue;*/
+}
+.contentInfo {
+    width: 98%;
+    height: 450px;
+    /*background-color: palegreen;*/
+}
+.headImgTable {
+    width: 98%;
+    height: 60px;
+    text-align: left;
+    /*background-color: lightgray;*/
+}
+.labelTitle {
+    width: 100px;
+    text-align: right;
+}
+.headImgTd {
+    width: 200px;
+    text-align: left;
+}
+#headImg {
+    width: 60px;
+    height: 60px;
+    margin-left: 40px;
+    border: 1px #cacaca solid;
+    border-radius: 50%;
+}
+#headImg:hover {
+    cursor: pointer;
+    box-shadow: 0 1.5px 1px 1.5px #cacaca;
+}
+.chImgTd {
+    text-align: left;
+}
+div.genderDiv #male:hover, div.genderDiv #female:hover {
+    cursor: pointer;
+}
+#saveBtn:hover {
+    cursor: pointer;
+}
+.uploadAvatarBtn {
+    display: none;
+    margin-left: 42px;
+    color: #5a5a5a;
+}
+table.userInfoTable, table.userSafeTable {
+    width: 98%;
+    height: auto;
+    /*background-color: #f9513b;*/
+}
+.infoLine {
+    width: 100px;
+    height: 40px;
+    text-align: left;
+}
+.infoVal {
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+}
+.infoInput {
+    text-align: left;
+}
+#nickname:hover {
+    cursor: pointer;
+}
+.genderDiv {
+    width: 164px;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+.chLinkTd {
+    text-align: left;
+}
+.chemailLink, .chpwdLink {
+    color: #5a5a5a;
+}
+.chemailLink:hover, .chpwdLink:hover {
+    color: red;
+    text-decoration: underline;
+}
+p.userSafeHead {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #DF4100;
+    text-align: left;
+}
+/*rightContent详细设计 end*/

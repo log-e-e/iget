@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/forgetpwd.css' %}">
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block mainContent %}
+    <main id="main-content">
+        <div id="contentContainer">
+            <div class="forgetBox">
+                <div class="forgetHead">
+                    {{ title }}
+                </div>
+                <div class="forgetFormBox">
+                    <form class="forgetForm" id="forgetForm" action="{% url 'users:forgetpwd' %}" method="post"
+                          autocomplete="off">
+                        {% csrf_token %}
+                        <table class="forgetTable">
+                            <tr class="inputLine">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_email" class="inputLabel">邮箱：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input class="forgetInput" id="id_email" type="email" name="email"
+                                           value="" autofocus="autofocus" />
+                                </td>
+                                <td class="inputSub">
+                                    <input id="forgetSubmitBtn" class="forgetSubmitBtn" type="submit" value="验证" />
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputContent"></td>
+                                <td colspan="2" class="inputContent">
+                                    <p id="inputError" style="color: red;text-align: left;"></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="forgetFoot">
+                    易得比价网为您选购笔记本电脑提供优质服务!
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+    <script>
+        $(document).ready(function () {
+            $forgetForm = $("#forgetForm");
+            $forgetSubBtn = $("td.inputSub > input.forgetSubmitBtn");
+            $inputError = $("#inputError");
+            $emailInput = $("#id_email");
+
+            $forgetForm.validate({
+                errorPlacement: function (error, element) {
+                    $("#inputError").text("");
+                    error.appendTo(element.parent("td").parent("tr").next("tr").find("#inputError"));
+                },
+                onkeyup: false,
+                {#必须在ajax成功后进行#}
+                async: false,
+                rules: {
+                    email: {
+                        required: true,
+                        checkEmail: true,
+                        remote: {
+                            url: "{% url 'users:ajax_check_email_registered_activated' %}",
+                            type: "get",
+                            dataType: "json",
+                            cache: false,
+                            async: false,
+                            data: {
+                                "email": function () {
+                                    return $emailInput.val();
+                                }
+                            },
+                            dataFilter: function (data) {
+                                data = JSON.parse(data);
+                                return data["registered"] === "true";
+                            },
+                        }
+                    },
+                },
+                messages: {
+                    email: {
+                        required: "必填项",
+                        {#此处为email，而非checkEmail#}
+                        email: "邮箱格式不正确",
+                        remote: "邮箱未注册",
+                    },
+                },
+            });
+        });
+        {#自定义正则表达式验证方法#}
+        $.validator.addMethod("checkEmail", function (value, element) {
+            var checkEmail = /^[a-z0-9._]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+            return this.optional(element) || (checkEmail.test(value));
+        }, "邮箱格式不正确");
+    </script>
+{% endblock %}

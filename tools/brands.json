@@ -1,0 +1,152 @@
+{
+  "惠普": {
+    "name_cn": "惠普",
+    "name_en": "hp",
+    "site_link": "https://www8.hp.com/cn/zh/home.html",
+    "status": 1
+  },
+  "戴尔": {
+    "name_cn": "戴尔",
+    "name_en": "dell",
+    "site_link": "https://www.dell.com/zh-cn",
+    "status": 1
+  },
+  "外星人": {
+    "name_cn": "外星人",
+    "name_en": "alienware",
+    "site_link": "http://www.alienware.com/",
+    "status": 1
+  },
+  "苹果": {
+    "name_cn": "苹果",
+    "name_en": "apple",
+    "site_link": "https://www.apple.com/cn/mac/",
+    "status": 1
+  },
+  "华硕": {
+    "name_cn": "华硕",
+    "name_en": "Asus",
+    "site_link": "https://www.asus.com.cn/",
+    "status": 1
+  },
+  "a豆": {
+    "name_cn": "a豆",
+    "name_en": "adol",
+    "site_link": "https://www.asus.com.cn/Laptops/Adol-Products/",
+    "status": 1
+  },
+  "玩家国度": {
+    "name_cn": "玩家国度",
+    "name_en": "rog",
+    "site_link": "https://www.asus.com.cn/ROG-Republic-Of-Gamers/",
+    "status": 1
+  },
+  "神舟": {
+    "name_cn": "神舟",
+    "name_en": "hasee",
+    "site_link": "http://www.hasee.com/chinese/index.aspx",
+    "status": 1
+  },
+  "宏碁": {
+    "name_cn": "宏碁",
+    "name_en": "acer",
+    "site_link": "https://www.acer.com.cn/index.html",
+    "status": 1
+  },
+  "机械革命": {
+    "name_cn": "机械革命",
+    "name_en": "mechrevo",
+    "site_link": "http://www.mechrevo.com/",
+    "status": 1
+  },
+  "三星": {
+    "name_cn": "三星",
+    "name_en": "samsung",
+    "site_link": "https://www.samsung.com/cn/",
+    "status": 1
+  },
+  "雷神": {
+    "name_cn": "雷神",
+    "name_en": "thunderobot",
+    "site_link": "http://www.leishen.cn/",
+    "status": 1
+  },
+  "机械师": {
+    "name_cn": "机械师",
+    "name_en": "machenike",
+    "site_link": "https://www.machenike.com/",
+    "status": 1
+  },
+  "联想": {
+    "name_cn": "联想",
+    "name_en": "lenovo",
+    "site_link": "https://www.lenovo.com.cn/",
+    "status": 1
+  },
+  "ThinkPad": {
+    "name_cn": "ThinkPad",
+    "name_en": "thinkpad",
+    "site_link": "https://www.thinkpad.com/",
+    "status": 1
+  },
+  "联想扬天": {
+    "name_cn": "联想扬天",
+    "name_en": "laptopYT",
+    "site_link": "http://b2b.lenovo.com.cn/laptopYT/",
+    "status": 1
+  },
+  "华为": {
+    "name_cn": "华为",
+    "name_en": "huawei",
+    "site_link": "https://www.huawei.com/cn/",
+    "status": 1
+  },
+  "荣耀": {
+    "name_cn": "荣耀",
+    "name_en": "honor",
+    "site_link": "http://www.honor.cn/",
+    "status": 1
+  },
+  "微软": {
+    "name_cn": "微软",
+    "name_en": "microsoft",
+    "site_link": "https://www.microsoftstore.com.cn/",
+    "status": 1
+  },
+  "微星": {
+    "name_cn": "微星",
+    "name_en": "msi",
+    "site_link": "https://cn.msi.com/",
+    "status": 1
+  },
+  "小米": {
+    "name_cn": "小米",
+    "name_en": "mi",
+    "site_link": "https://www.mi.com/",
+    "status": 1
+  },
+  "炫龙": {
+    "name_cn": "炫龙",
+    "name_en": "shinelon",
+    "site_link": "http://www.shinelon.com/",
+    "status": 1
+  },
+  "LG": {
+    "name_cn": "LG",
+    "name_en": "lg",
+    "site_link": "https://www.lg.com/cn/about-lg",
+    "status": 1
+  },
+  "雷蛇": {
+    "name_cn": "雷蛇",
+    "name_en": "razer",
+    "site_link": "http://cn.razerzone.com/",
+    "status": 1
+  },
+  "清华同方": {
+    "name_cn": "清华同方",
+    "name_en": "tongfangpc",
+    "site_link": "https://www.tongfangpc.com/",
+    "status": 1
+  }
+}

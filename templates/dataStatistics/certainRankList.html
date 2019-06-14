@@ -1,0 +1,509 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/dataStatistics/certainRankList.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+首页
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <div class="leftSideBar">
+            <ul class="rankTypeNav">
+                <li class="navItem">
+                    <a class="navItemLink1" href="">综合排行榜</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:allRankList' %}">总排行榜</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">热门笔记本</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">笔记本品牌</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink2"  href="">按品牌</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">惠普</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">戴尔</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">华硕</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">华为</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">雷神</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">外星人</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">苹果</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">ThinkPad</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">联想</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink3" href="">按产品特性</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">屏幕尺寸<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">17.3</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">15.6</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">14.0</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">13.3</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">12.5</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">12.0</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">11.6</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">产品定位<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">游戏本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">时尚轻薄本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">商务办公本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">影音娱乐本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">校园学生本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">2合1电脑</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">CPU类型<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i9</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i7</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i5</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i3</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">AMD</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">其它特性<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem_hd">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">固态硬盘</a>
+                                </li>
+                                <li class="grdSubNavItem_hd">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">混合硬盘</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">发烧级显卡</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">性能级显卡</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">8GB内存</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">4GB内存</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink4" href="">按价格区间</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">3500-3999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">4000-4999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">5000-5999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">6000-7999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">8000元以上</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="rightContent">
+            <div class="rankHeadDiv">
+                <div class="rankHeadTitle">热门笔记本电脑排行榜</div>
+            </div>
+            <div class="rankPrdsDiv">
+                <table class="rankPrdTable">
+                    <tr class="rankHeadInfoTitles">
+                        <td class="numTitle">排名</td>
+                        <td class="imgTitle">图片</td>
+                        <td class="prdTitle">产品型号</td>
+                        <td class="priceTitle">参考价</td>
+                        <td class="markTitle">评分</td>
+                        <td class="compareTitle">加入对比</td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">1</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">2</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">3</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">4</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">5</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">6</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">7</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">8</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">9</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">10</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">11</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">12</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">13</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">14</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                    <tr class="rankPrdInfo">
+                        <td class="rankNum">15</td>
+                        <td class="rankPrdImgLi">
+                            <a class="rankPrdImgLink" href="#" title="点击查看详情">
+                                <img class="rankPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="图片">
+                            </a>
+                        </td>
+                        <td class="rankPrdTitle">
+                            <a class="prdTitleLink" href="#" title="点击查看详情">
+                                联想(Lenovo)拯救者Y7000 15.6英寸游戏笔记本电脑(英特尔八代酷睿i5-8300H 8G 2T+128G GTX1050Ti 4G)
+                            </a>
+                        </td>
+                        <td class="rankPrdPrice">
+                            ￥<span class="rankPrice">5999</span>起
+                        </td>
+                        <td class="rankPrdMark">9.3</td>
+                        <td class="prdCompare">
+                            <a class="addCompare" href="#" title="点击加入对比">对比</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

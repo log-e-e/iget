@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/usercenter_msg.css' %}">
+{% endblock %}
+
+{% block title %}我的消息——个人中心{% endblock %}
+
+{% block mainContent %}
+
+    <main id="main-content">
+        <div id="marginTopSep"></div>
+        <div id="contentContainer">
+            <div class="usercenterBox">
+                <div class="leftCategory">
+                    <ul class="categoryBox">
+                        <li class="categoryTitle">个人中心</li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_info' %}">账号信息</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_fav' %}">我的收藏</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_views' %}">我的足迹</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_msg' %}" style="color: red;">站内消息</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightContent">
+                    <div class="contentTitle">站内消息</div>
+                    <div class="contentInfo">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

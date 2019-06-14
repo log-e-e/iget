@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 2450px;
+}
+dt, dd {
+    display: inline-block;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 2050px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    /*border-bottom: 1px #dddddd solid;*/
+}
+#marginTopSep {
+    width: 100%;
+    height: 20px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 90%;
+    height: 1980px;
+    background-color: #F3F2F3;
+    /*background-color: lightgray;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.leftSideBar {
+    float: left;
+    width: 19%;
+    height: 1920px;
+    text-align: center;
+    /*margin-right: 10px;*/
+    background-color: #fff;
+    /*border: 0.5px #F77844 solid;*/
+}
+ul.rankTypeNav {
+    width: 200px;
+    height: auto;
+    border: 0.5px #F3F2F3 solid;
+}
+ul.rankTypeNav li.navItem {
+    display: block;
+    width: 200px;
+    height: auto;
+    /*background-color: #f3edc2;*/
+    /*background-color: #dddddd;*/
+    margin-bottom: 2px;
+}
+ul.rankTypeNav li.navItem > a {
+    display: block;
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    color: black;
+    background-color: #dddddd;
+    /*border: 0.5px #F3F2F3 solid;*/
+    /*border-bottom: 0.5px #dddddd solid;*/
+}
+ul.rankTypeNav li.navItem > a:hover {
+    background-color: #f3edc2;
+}
+ul.subNav {
+    /*display: none;*/
+}
+ul.subNav li.subNavItem {
+    display: block;
+    width: 150px;
+    height: auto;
+    color: #373737;
+    /*background-color: #F3F2F3;*/
+    margin-bottom: 1px;
+}
+ul.subNav li.subNavItem a.subNavItemLink {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #373737;
+}
+ul.subNav li.subNavItem a.subNavItemLink:hover {
+    background-color: #F3F2F3;
+    /*color: red;*/
+}
+ul.subNav li.subNavItem a.noGrd:hover {
+    background-color: #F3F2F3;
+    color: red;
+    text-decoration: underline;
+}
+ul.subNav li.subNavItem ul.grdSubNav {
+    display: none;
+}
+ul.grdSubNav li.grdSubNavItem, li.grdSubNavItem_cpu, li.grdSubNavItem_hd, li.grdSubNavItem_grp {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+}
+a.grdSubNavItemLink {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    color: #5a5a5a;
+}
+a.grdSubNavItemLink:hover {
+    color: red;
+    text-decoration: underline;
+    background-color: #F3F2F3;
+}
+.rightContent {
+    float: right;
+    width: 80%;
+    height: 100%;
+    /*border: 0.5px #F77844 solid;*/
+    /*background-color: #5a5a5a;*/
+}
+.rankModule {
+    width: 970px;
+    height: auto;
+    background-color: #fff;
+    margin-bottom: 25px;
+}
+.moduleTitle {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    text-align: left;
+    /*background-color: #f3edc2;*/
+}
+.rankModuleTypes {
+    width: 100%;
+    height: auto;
+    /*border: 0.5px #5A5A5A solid;*/
+}
+.rankModuleType {
+    display: inline-block;
+    width: 320px;
+    /*width: 33%;*/
+    height: auto;
+    font-size: 12px;
+    /*border: 0.5px lightgray solid;*/
+    /*background-color: #ececec;*/
+}
+.moduleTypeTitle {
+    width: 100%;
+    height: 40px;
+    background-color: #fafafa;
+    /*border-bottom: 0.5px lightgray dashed;*/
+}
+.typeTitle {
+    float: left;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    font-size: 20px;
+    color: #5a5a5a;
+}
+.moreRank {
+    float: right;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    font-size: 12px;
+    color: #5a5a5a;
+}
+div.moreRank a.moreRankLink {
+    color: #5a5a5a;
+    font-size: 12px;
+}
+div.moreRank a.moreRankLink:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+ul.rankList li {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    /*overflow: hidden;*/
+}
+ul.rankList li p.rankNum {
+    /*display: inline-block;*/
+    float: left;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    color: #198ef6;
+}
+ul.rankList li div.rankTitle {
+    /*display: inline-block;*/
+    float: left;
+    width: 200px;
+    height: 35px;
+    text-align: left;
+    overflow: hidden;
+    /*隐藏文字*/
+    text-overflow: ellipsis;
+    /*line-height: px;*/
+}
+ul.rankList li div.rankTitle a.rankTitleLink {
+    /*display: inline-block;*/
+    height: 35px;
+    line-height: 35px;
+    text-align: left;
+    color: #5a5a5a;
+}
+ul.rankList li div.rankTitle a.rankTitleLink:hover {
+    color: red;
+    text-decoration: underline;
+}
+ul.rankList li p.price {
+    /*display: inline-block;*/
+    float: left;
+    width: 60px;
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+    font-size: 15px;
+    color: #5a5a5a;
+}

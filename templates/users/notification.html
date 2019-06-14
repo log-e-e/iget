@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/notification.css' %}">
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block mainContent %}
+
+    <main id="main-content">
+        <div id="contentContainer">
+            <div class="notificationBox">
+                <div class="notificationHead">
+                    {{ title }}
+                </div>
+                <div class="notificationInfoBox">
+                    <table class="notifyTable">
+                        <tr class="notifyLine">
+                            <td class="notifyCol"></td>
+                        </tr>
+                        <tr class="notifyLine">
+                            <td class="notifyCol">
+                                {% if notify_type == 'login_email' %}
+                                    {% if mail_website == '#' %}
+                                        <p class="notifyContent" style="text-align: left;">
+                                            {{ msg }}前往登录邮箱。
+                                        </p>
+                                    {% else %}
+                                        <p class="notifyContent" style="text-align: left;">
+                                            {{ msg }}
+                                            <a class="loginLink" href="{% url 'users:login_email' mail_website %}" target="_blank">点击登录邮箱。</a>
+                                        </p>
+                                    {% endif %}
+                                    <br>
+                                    <p class="resend_p">
+                                        <input id="targetEmail" type="hidden" value="{{ target_email }}">
+                                        <input id="send_email_type" type="hidden" value="{{ send_email_type }}">
+                                        如若没有收到邮件，您可以点击此处：
+                                        <span id="re_send_email"  title="点击重新发送邮件">重新发送</span>
+                                        <span id="sending" hidden="hidden" style="color: #198ef6;font-size: 15px;">发送中...</span>
+                                    </p>
+                                {% elif notify_type == 'login_iget' %}
+                                    <p class="notifyContent" style="text-align: left;">
+                                        {{ msg }}
+                                        <a class="loginLink" href="{% url 'users:login' %}" target="_self">登录易得。</a>
+                                    </p>
+                                {% elif notify_type == 'other' %}
+                                    <p class="notifyContent" style="text-align: left;">
+                                        {{ msg }}
+                                    </p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="notificationFoot">
+                    易得比价网为您选购笔记本电脑提供优质服务!
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+    <script>
+        $(document).ready(function () {
+            if ("{{ notify_type }}" === "login_email") {
+                $reSendEmail = $("#re_send_email");
+                $targetEmail = $("#targetEmail");
+                $sendEmailType = $("#send_email_type");
+                $codeSendingSpan = $("#sending");
+
+                $reSendEmail.click(function () {
+                    $reSendEmail.hide();
+                    $codeSendingSpan.show();
+                    $.growl({title: "", message: "请耐心等待，邮件发送中……"});
+                    $.ajax({
+                        url: "{% url 'users:ajax_send_email' %}?email=" + $targetEmail.val() + "&verify_type=" + $sendEmailType.val(),
+                        type: 'get',
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            $codeSendingSpan.hide();
+                            $reSendEmail.show();
+                            if (data.completed === "true") {
+                                $.growl({title: "", message: data.msg});
+                            }
+                            else {
+                                $.growl.error({title: "", message: data.msg});
+                            }
+                        },
+                    });
+                });
+            }
+        });
+    </script>
+{% endblock %}

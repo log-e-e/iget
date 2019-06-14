@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 2120px;
+}
+dt, dd {
+    display: inline-block;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 1720px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    /*border-bottom: 1px #dddddd solid;*/
+}
+#marginTopSep {
+    width: 100%;
+    height: 20px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 90%;
+    /*330px*/
+    height: 1650px;
+    background-color: #F3F2F3;
+    /*background-color: lightgray;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.leftSideBar {
+    float: left;
+    width: 19%;
+    height: 1650px;
+    text-align: center;
+    /*margin-right: 10px;*/
+    background-color: #fff;
+    /*border: 0.5px #F77844 solid;*/
+}
+ul.rankTypeNav {
+    width: 200px;
+    height: auto;
+    border: 0.5px #F3F2F3 solid;
+}
+ul.rankTypeNav li.navItem {
+    display: block;
+    width: 200px;
+    height: auto;
+    /*background-color: #f3edc2;*/
+    /*background-color: #dddddd;*/
+    margin-bottom: 2px;
+}
+ul.rankTypeNav li.navItem > a {
+    display: block;
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    color: black;
+    background-color: #dddddd;
+    /*border: 0.5px #F3F2F3 solid;*/
+    /*border-bottom: 0.5px #dddddd solid;*/
+}
+ul.rankTypeNav li.navItem > a:hover {
+    background-color: #f3edc2;
+}
+ul.subNav {
+    /*display: none;*/
+}
+ul.subNav li.subNavItem {
+    display: block;
+    width: 150px;
+    height: auto;
+    color: #373737;
+    /*background-color: #F3F2F3;*/
+    margin-bottom: 1px;
+}
+ul.subNav li.subNavItem a.subNavItemLink {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #373737;
+}
+ul.subNav li.subNavItem a.subNavItemLink:hover {
+    background-color: #F3F2F3;
+    /*color: red;*/
+}
+ul.subNav li.subNavItem a.noGrd:hover {
+    background-color: #F3F2F3;
+    color: red;
+    text-decoration: underline;
+}
+ul.subNav li.subNavItem ul.grdSubNav {
+    display: none;
+}
+ul.grdSubNav li.grdSubNavItem, li.grdSubNavItem_cpu, li.grdSubNavItem_hd, li.grdSubNavItem_grp {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+}
+a.grdSubNavItemLink {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    color: #5a5a5a;
+}
+a.grdSubNavItemLink:hover {
+    color: red;
+    text-decoration: underline;
+    background-color: #F3F2F3;
+}
+.rightContent {
+    float: right;
+    width: 80%;
+    height: 100%;
+    /*border: 0.5px #F77844 solid;*/
+    background-color: #fff;
+}
+.rankHeadDiv {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+.rankHeadTitle {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: left;
+    border-bottom: 0.5px #dddddd solid;
+}
+tr.rankHeadInfoTitles {
+    width: 100%;
+    height: auto;
+}
+tr.rankHeadInfoTitles td {
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+    /*background-color: #F77844;*/
+    /*margin: 0;*/
+    /*margin: 2px;*/
+}
+td.numTitle {
+    width: 105px;
+}
+td.imgTitle {
+    width: 120px;
+}
+td.prdTitle {
+    width: 400px;
+}
+td.priceTitle {
+    width: 100px;
+}
+td.markTitle {
+    width: 110px;
+}
+td.compareTitle {
+    width: 110px;
+}
+ul.rankPrdList {
+    width: 100%;
+    height: auto;
+    background-color: #ececec;
+}
+div.rankPrdsDiv {
+    margin-top: 5px;
+}
+table.rankPrdList td {
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    color: #5a5a5a;
+}
+td.rankNum {
+    width: 105px;
+    font-size: 20px;
+    color: #198ef6;
+}
+td.rankPrdImgLi {
+    width: 120px;
+}
+img.rankPrdImg {
+    width: 120px;
+    height: 90px;
+}
+td.rankPrdTitle {
+    text-align: left;
+}
+td.rankPrdTitle a.prdTitleLink {
+    color: #5a5a5a;
+}
+td.rankPrdTitle a.prdTitleLink:hover {
+    color: red;
+    text-decoration: underline;
+}
+td.rankPrdPrice {
+    color: #5a5a5a;
+    font-size: 10px;
+}
+td.rankPrdPrice span.rankPrice {
+    color: #E51106;
+    font-size: 20px;
+}
+td.rankPrdMark {
+    color: #E51106;
+    font-size: 20px;
+}
+td.prdCompare a.addCompare {
+    display: block;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    color: #666666;
+}
+td.prdCompare a.addCompare:hover {
+    color: red;
+    text-decoration: underline;
+}

@@ -1,0 +1,1169 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/dataStatistics/allRankList.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+排行榜——易得
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <div class="leftSideBar">
+            <ul class="rankTypeNav">
+                <li class="navItem">
+                    <a class="navItemLink1" href="{% url 'dataStatistics:allRankList' %}">综合排行榜</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:allRankList' %}">总排行榜</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">热门笔记本</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">笔记本品牌</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink2"  href="">按品牌</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">惠普</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">戴尔</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">华硕</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">华为</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">雷神</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">外星人</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">苹果</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">ThinkPad</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">联想</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink3" href="">按产品特性</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">屏幕尺寸<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">17.3</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">15.6</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">14.0</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">13.3</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">12.5</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">12.0</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">11.6</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">产品定位<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">游戏本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">时尚轻薄本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">商务办公本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">影音娱乐本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">校园学生本</a>
+                                </li>
+                                <li class="grdSubNavItem">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">2合1电脑</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">CPU类型<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i9</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i7</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i5</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">Core i3</a>
+                                </li>
+                                <li class="grdSubNavItem_cpu">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">AMD</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="subNavItemLink" href="">其它特性<em>></em></a>
+                            <ul class="grdSubNav">
+                                <li class="grdSubNavItem_hd">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">固态硬盘</a>
+                                </li>
+                                <li class="grdSubNavItem_hd">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">混合硬盘</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">发烧级显卡</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">性能级显卡</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">8GB内存</a>
+                                </li>
+                                <li class="grdSubNavItem_grp">
+                                    <a class="grdSubNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">4GB内存</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navItem">
+                    <a class="navItemLink4" href="">按价格区间</a>
+                    <ul class="subNav">
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">3500-3999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">4000-4999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">5000-5999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">6000-7999元</a>
+                        </li>
+                        <li class="subNavItem">
+                            <a class="noGrd subNavItemLink" href="{% url 'dataStatistics:certainRankList' %}">8000元以上</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="rightContent">
+            <div class="rankModule">
+                <div class="moduleTitle">综合排行</div>
+                <div class="rankModuleTypes">
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rankModule">
+                <div class="moduleTitle">综合排行</div>
+                <div class="rankModuleTypes">
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="rankModule">
+                <div class="moduleTitle">综合排行</div>
+                <div class="rankModuleTypes">
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rankModuleType">
+                        <div class="moduleTypeTitle">
+                            <div class="typeTitle">热门笔记本排行榜</div>
+                            <div class="moreRank">
+                                <a class="moreRankLink" href="{% url 'dataStatistics:certainRankList' %}" title="点击查看更多">更多>></a>
+                            </div>
+                        </div>
+                        <ul class="rankList">
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                            <li>
+                                <p class="rankNum">1</p>
+                                <div class="rankTitle">
+                                    <a class="rankTitleLink" href="" title="戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）">戴尔Inspiron 灵越 14 5000系列（Ins 14-5488-D1625S）</a>
+                                </div>
+                                <p class="price">￥5199</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

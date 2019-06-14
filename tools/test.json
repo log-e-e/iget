@@ -1,0 +1,234 @@
+{
+    "products_count": "1073",
+    "products_info_page": {
+        "previous_page_number": "1",
+        "next_page_number": "2",
+        "cur_page": "1",
+        "total_page": "54"
+    },
+    "products_info": [
+        {
+            "product": {
+                "img_url": "https://2c.zol-img.com.cn/product/181_80x60/456/cePdi3Ngzus3I.jpg",
+                "name": "ROG G701VI6820（64GB/1TB+1TB/8G独显）",
+                "prd_serial_number": "000000000000000000018C1557992185810253"
+            },
+            "priceStatistics": {
+                "lowest_price": "26300",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2f.zol-img.com.cn/product/181_80x60/387/ceja5Xp34FbU.jpg",
+                "name": "ROG G701VI7820（32GB/512GB+1TB/8G独显）",
+                "prd_serial_number": "000000000000000000018D15579921858105404"
+            },
+            "priceStatistics": {
+                "lowest_price": "23500",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2a.zol-img.com.cn/product/181_80x60/790/ceunwKmxw5nhY.jpg",
+                "name": "ROG G752VS6700（16GB/1TB/8G独显）",
+                "prd_serial_number": "000000000000000000019V1557992190350982"
+            },
+            "priceStatistics": {
+                "lowest_price": "13400",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/181_80x60/271/ceDpRKnaWxynQ.jpg",
+                "name": "ROG G752VS7820（16GB/512GB+1TB/8G独显）",
+                "prd_serial_number": "000000000000000000019W15579921903512056"
+            },
+            "priceStatistics": {
+                "lowest_price": "20400",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2f.zol-img.com.cn/product/189_80x60/717/ceykwJCmgXQZw.jpg",
+                "name": "ROG G7AI7700（16GB/512GB+1TB）",
+                "prd_serial_number": "000000000000000000019815579921877850683"
+            },
+            "priceStatistics": {
+                "lowest_price": "27000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2c.zol-img.com.cn/product/189_80x60/732/cenlSXtFCB6JQ.jpg",
+                "name": "ROG G7AI7820（32GB/2TB）",
+                "prd_serial_number": "000000000000000000019915579921877851624"
+            },
+            "priceStatistics": {
+                "lowest_price": "31000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/189_80x60/713/ceg0jExSjPUU.jpg",
+                "name": "ROG G7AI7820（64GB/2TB）",
+                "prd_serial_number": "00000000000000000001971557992187784876"
+            },
+            "priceStatistics": {
+                "lowest_price": "37000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2e.zol-img.com.cn/product/168_80x60/716/ceSoAZ01FWhA.jpg",
+                "name": "ROG GFX72VL6700（8GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019v1557992189280444"
+            },
+            "priceStatistics": {
+                "lowest_price": "11100",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/178_80x60/413/ceyHpl8So0n5c.jpg",
+                "name": "ROG GFX72VM6700（8GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019y1557992189281541"
+            },
+            "priceStatistics": {
+                "lowest_price": "14000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2a.zol-img.com.cn/product/185_80x60/710/ceufsIgRmTagM.jpg",
+                "name": "ROG GFX72VS6700（8GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019F15579921892839525"
+            },
+            "priceStatistics": {
+                "lowest_price": "16000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2d.zol-img.com.cn/product/177_80x60/927/cenBqaQXiEZ6.jpg",
+                "name": "ROG GFX72VS6700（8GB/256GB+1TB）",
+                "prd_serial_number": "000000000000000000019G1557992189284088"
+            },
+            "priceStatistics": {
+                "lowest_price": "15800",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/184_80x60/291/cedfe0IaX2WQ.jpg",
+                "name": "ROG GFX72VS6820（16GB/256GB+1TB）",
+                "prd_serial_number": "000000000000000000019E1557992189283781"
+            },
+            "priceStatistics": {
+                "lowest_price": "15700",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2a.zol-img.com.cn/product/175_80x60/700/ceROd0nOVSOVM.jpg",
+                "name": "ROG GFX72VS6820（16GB/512GB+1TB）",
+                "prd_serial_number": "000000000000000000019C15579921892831008"
+            },
+            "priceStatistics": {
+                "lowest_price": "17900",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2d.zol-img.com.cn/product/175_80x60/85/cewzXpjn4D3OE.jpg",
+                "name": "ROG GFX72VS6820（32GB/1TB+1TB）",
+                "prd_serial_number": "000000000000000000019s1557992189279486"
+            },
+            "priceStatistics": {
+                "lowest_price": "20000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2d.zol-img.com.cn/product/183_80x60/831/cecqkKmWHajdc.jpg",
+                "name": "ROG GFX72VS7700（8GB/256GB+1TB）",
+                "prd_serial_number": "000000000000000000019u15579921892799797"
+            },
+            "priceStatistics": {
+                "lowest_price": "17000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/184_80x60/309/ceX8P5pEdshG6.jpg",
+                "name": "ROG GFX72VS7820（16GB/512GB+1TB）",
+                "prd_serial_number": "000000000000000000019w15579921892812154"
+            },
+            "priceStatistics": {
+                "lowest_price": "24000",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2a.zol-img.com.cn/product/168_80x60/718/ceYVNaLoQoKI.jpg",
+                "name": "ROG GFX72VT6700（8GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019t1557992189279717"
+            },
+            "priceStatistics": {
+                "lowest_price": "10600",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2d.zol-img.com.cn/product/185_80x60/569/cetg5FS99oLN6.jpg",
+                "name": "ROG GFX72VY6700（16GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019B15579921892827742"
+            },
+            "priceStatistics": {
+                "lowest_price": "19600",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2c.zol-img.com.cn/product/169_80x60/572/ceqQBPJxOtVs.jpg",
+                "name": "ROG GFX72VY6700（16GB/256GB+1TB）",
+                "prd_serial_number": "000000000000000000019r15579921892784076"
+            },
+            "priceStatistics": {
+                "lowest_price": "15600",
+                "mall_num": "0"
+            }
+        },
+        {
+            "product": {
+                "img_url": "https://2b.zol-img.com.cn/product/174_80x60/117/ceQspTSpElfq.jpg",
+                "name": "ROG GFX72VY6700（8GB/128GB+1TB）",
+                "prd_serial_number": "000000000000000000019x15579921892813888"
+            },
+            "priceStatistics": {
+                "lowest_price": "11600",
+                "mall_num": "0"
+            }
+        }
+    ],
+    "sort": "default",
+    "searchType": "filter",
+    "none_result_filters": ["2-1", "2-9", "3-1", "3-3"]
+}

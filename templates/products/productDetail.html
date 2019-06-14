@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/products/productDetail.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+商品详情——易得
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <div class="productTitle">{{ product.name }}</div>
+        <div class="mainPrdContent">
+            <div class="productRefererBox">
+                <div class="productBasicInfo">
+                    <div class="prdImgDiv">
+                        <img class="detailImg" src="{{ product.img_url }}" alt="图片">
+                    </div>
+                    <div class="basicInfoBox">
+                        <p class="lowestPrice">
+                            最低参考价：
+                            <span style="color: #E51106;font-size: 18px;">
+                                <em style="color: #E51106;font-size: 10px;">￥</em>
+                                {{ priceStatistics.lowest_price }}
+                            </span>
+                        </p>
+                        <p class="saleMallsNum" style="border-bottom: 0.1px gainsboro solid;">
+                            在售商城统计：
+                            <span style="font-size: 18px;color: #333333;">{{ priceStatistics.mall_num }}</span>
+                        </p>
+                        <div class="tableBox">
+                            <table class="basicInfoTable">
+                                <tr>
+                                    <td>品牌：<span class="infoItem">{{ productBrand.name_cn }}</span></td>
+                                    <td>上市时间：<span class="infoItem">{{ productConfiguration.time_to_market }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>产品类型：<span class="infoItem">{{ productConfiguration.product_type }}</span></td>
+                                    <td>屏幕尺寸：<span class="infoItem">{{ productConfiguration.sc_size }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CPU类型：<span class="infoItem">{{ productConfiguration.cpu_type }}</span></td>
+                                    <td>硬盘容量：<span class="infoItem">{{ productConfiguration.hd_cap }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>内存容量：<span class="infoItem">{{ productConfiguration.memory_cap }}</span></td>
+                                    <td>显存容量：<span class="infoItem">{{ productConfiguration.graphics_cap }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="moreConf" href="{% url 'products:get_product_config' %}?prd_serial_number={{ product.prd_serial_number }}" title="点击查看更多配置参数">查看更多配置参数>></a>
+                                    </td>
+                                    <td>
+                                        <a class="addFav" href="" title="点击收藏">点击收藏</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="prdSaleMallList">
+                    <div class="mallInfoHead">
+                        在售商城商品信息
+                    </div>
+                    <table class="mallList">
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <a class="mallPrdImgLink" href="" title="点击查看详情">
+                                    <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                                </a>
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <a class="mallPrdImgLink" href="" title="点击查看详情">
+                                    <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                                </a>
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <a class="mallPrdImgLink" href="" title="点击查看详情">
+                                    <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                                </a>
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <a class="mallPrdImgLink" href="" title="点击查看详情">
+                                    <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                                </a>
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <a class="mallPrdImgLink" href="" title="点击查看详情">
+                                    <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                                </a>
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                        <tr class="prdMallInfoItem">
+                            <td class="mallPrdImgDiv">
+                                <img class="mallPrdImg" src="{% static 'media/system_default/default_pc_img.jpg' %}" alt="">
+                            </td>
+                            <td class="mallPrdTitle">
+                                <a class="mallPrdTitleLink" href="" title="点击查看详情">
+                                    联想(Lenovo) 拯救者Y7000 英特尔? 酷睿I5 游戏本学生笔记本电脑(i5-8300H 8G 2TB+128GB GTX1050Ti 4G独显 )R720升级版
+                                </a>
+                            </td>
+                            <td class="mallPrdPrice">￥<span style="color: red; font-size: 20px;">6599</span></td>
+                            <td class="mallName">
+                                <a class="mallSiteLink" href="" title="点击查看详情">京东商城</a>
+                            </td>
+                            <td class="addFavDiv">
+                                <a class="addFavLink" href="" title="添加到个人收藏">收藏</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="prdSeriesList">
+                    <div class="seriesHead">
+                        所属系列的其他产品
+                    </div>
+                    <table class="seriesList">
+                        {% for other_same_series_prd_infos in other_same_series_prd_infos %}
+                            <tr class="seriesItem">
+                            <td class="itemTitle">
+                                <a class="itemTitleLink"
+                                   href="{% url 'products:get_product_detail' %}?prd_serial_number={{ other_same_series_prd_infos.product.prd_serial_number }}"
+                                   title="点击查看产品信息详情" target="_blank">
+                                   {{ other_same_series_prd_infos.product.name }}
+                                </a>
+                            </td>
+                            <td class="itemConf">
+                                <a class="itemConfLink"
+                                   href="{% url 'products:get_product_config' %}?prd_serial_number={{ other_same_series_prd_infos.product.prd_serial_number }}"
+                                   title="点击查看产品配置详情" target="_blank">
+                                    {{ other_same_series_prd_infos.productConfiguration.cpu_type }}/
+                                    {{ other_same_series_prd_infos.productConfiguration.memory_cap }}/
+                                    {{ other_same_series_prd_infos.productConfiguration.hd_cap }}/
+                                    {{ other_same_series_prd_infos.productConfiguration.graphics_type }}/
+                                    {{ other_same_series_prd_infos.productConfiguration.os_type }}
+                                </a>
+                            </td>
+                            <td class="itemLowestPrice">
+                                ￥<span style="color: red; font-size: 20px;">{{ other_same_series_prd_infos.priceStatistics.lowest_price }}</span>
+                            </td>
+                            <td class="onSaleMall">
+                                <a class="saleMallNum" href="">{{ other_same_series_prd_infos.priceStatistics.mall_num }}&nbsp;家在售</a>
+                            </td>
+                            <td class="addCompareDiv">
+                                <a class="addCompare" href="">对比</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="productRec">
+                <div class="prdRecBox">
+                    <p class="samePrdsTitle">同价位笔记本电脑推荐</p>
+                    <ul class="samePricePrdList">
+                        {% for other_same_price_prd_info in other_same_price_prd_infos %}
+                            <li class="samePricePrdItem">
+                                <table class="samePricePrdItemTable">
+                                    <tr>
+                                        <td class="noneTd"></td>
+                                        <td class="noneTd"></td>
+                                        <td class="noneTd"></td>
+                                        <td class="noneTd"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="prdImgTd">
+                                            <a class="prdImgTdLink"
+                                               href="{% url 'products:get_product_detail' %}?prd_serial_number={{ other_same_price_prd_info.product.prd_serial_number }}"
+                                               title="点击查看详情" target="_blank">
+                                                <img class="prdImg" src="{{ other_same_price_prd_info.product.img_url }}" alt="点击图片查看详情">
+                                            </a>
+                                        </td>
+                                        <td class="prdTitleTd" colspan="3">
+                                            <a class="samePricePrdTitle"
+                                               href="{% url 'products:get_product_detail' %}?prd_serial_number={{ other_same_price_prd_info.product.prd_serial_number }}"
+                                               title="点击查看详情" target="_blank">
+                                                {{ other_same_price_prd_info.product.name }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="prdPriceTd" colspan="2">
+                                            ￥<span class="lowestPrice">{{ other_same_price_prd_info.priceStatistics.lowest_price }}</span>起
+                                        </td>
+                                        <td class="addCompareTd" colspan="2">
+                                            <a class="addCompare" href="">对比</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

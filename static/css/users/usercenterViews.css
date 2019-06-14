@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 1000px;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    border-bottom: 1px #F3F2F3 solid;
+}
+#marginTopSep {
+    width: 100%;
+    height: 50px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 75%;
+    height: 500px;
+    background-color: #F3F2F3;
+    /*background-color: #dddddd;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.usercenterBox {
+    width: 100%;
+    height: 500px;
+    /*background-color: darkgray;*/
+    /*border-left: 2px #F3F2F3 solid;*/
+    /*border-right: 2px #F3F2F3 solid;*/
+    /*border-top: 1px gray solid;*/
+}
+.leftCategory {
+    float: left;
+    width: 20%;
+    height: 100%;
+    background-color: #dddddd;
+}
+.rightContent {
+    float: right;
+    width: 79%;
+    height: 100%;
+    background-color: #fff;
+}
+/*中间内容容器基础布局 end*/
+
+/*leftCategory详细设计 start*/
+.categoryBox {
+    display: block;
+}
+.categoryTitle {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #444;
+}
+.categoryItem, .categoryItemLink {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #5A5A5A;
+}
+.categoryItemLink:hover {
+    color: #E51106;
+}
+/*leftCategory详细设计 end*/
+
+/*rightContent详细设计 start*/
+.contentTitle {
+    width: 98%;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    color: #DF4100;
+    /*background-color: lightskyblue;*/
+}
+.titleP {
+    float: left;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: left;
+    color: #DF4100;
+}
+.delAll {
+    float: right;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+    color: #5a5a5a;
+}
+.contentInfo {
+    width: 98%;
+    height: 450px;
+    /*background-color: palegreen;*/
+}
+.viewsTable {
+    width: 100%;
+    height: 440px;
+    border: 1px darkgray solid;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.viewsTable thead tr, .viewsTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.viewsTable tbody {
+    display: block;
+    height: 400px;
+    overflow: auto;
+}
+.viewsThead, .theadTr {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: #5a5a5a;
+}
+.titleLinkTh, .priceTh, .viewsTimeTh, .deleteViewsTh {
+    height: 30px;
+    border-bottom: 0.5px lightgray solid;
+}
+.titleLinkTh {
+    width: 350px;
+}
+.priceTh, .viewsPrice {
+    color: #5a5a5a;
+    width: 100px;
+    border-bottom: 0.5px lightgray solid;
+}
+.deleteViewsTh, .deleteViews {
+    color: #5a5a5a;
+    width: 100px;
+    border-bottom: 0.5px lightgray solid;
+}
+.viewsTitle {
+    width: 350px;
+    text-align: left;
+    color: #5a5a5a;
+    border-bottom: 0.5px lightgray solid;
+}
+.viewsTitleLink {
+    color: #5a5a5a;
+}
+.viewsTitleLink:hover {
+    color: #f9513b;
+}
+.viewsTime {
+    color: #5a5a5a;
+    border-bottom: 0.5px lightgray solid;
+}
+.viewsPrice {
+    color: #5a5a5a;
+    font-size: 10px;
+}
+.lowestPrice {
+    color: #f9513b;
+    font-size: 18px;
+}
+/*rightContent详细设计 end*/

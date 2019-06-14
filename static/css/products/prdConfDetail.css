@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 1420px;
+}
+dt, dd {
+    display: inline-block;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 1220px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    /*border-bottom: 1px #dddddd solid;*/
+}
+#marginTopSep {
+    width: 100%;
+    height: 40px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 90%;
+    height: 1080px;
+    background-color: #fff;
+    /*background-color: #F3F2F3;*/
+    /*background-color: lightgray;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+div.productTitleDiv {
+    width: 100%;
+    height: 40px;
+    border-bottom: 0.5px #dddddd solid;
+}
+div.productTitleDiv p.prdTitle {
+    display: inline-block;
+    width: 89%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    font-size: 20px;
+}
+div.productTitleDiv a.returnPrdDetail {
+    display: inline-block;
+    width: 10%;
+    color: #198ef6;
+}
+div.mainConfContent {
+    width: 100%;
+    height: 1080px;
+}
+div.mainConfContent div.leftContent {
+    /*display: inline-block;*/
+    float: left;
+    width: 78%;
+    height: auto;
+}
+div.leftContent table.confInfoTable {
+    margin-top: 20px;
+    /*margin-left: 10px;*/
+    border-bottom: 1px #dddddd solid;
+    border-right: 1px #dddddd solid;
+}
+table.confInfoTable tr td {
+    width: 470px;
+    height: 30px;
+}
+table.confInfoTable tr.confInfosTitle td {
+    height: 33px;
+    font-size: 17px;
+    background-color: #dddddd;
+}
+tr.confInfoTr td.confInfoTitleTd {
+    color: #5a5a5a;
+    text-align: right;
+}
+td.confInfoTitleTd p.confTitleP {
+    float: right;
+    margin-right: 30px;
+    text-align: right;
+    font-size: 15px;
+    color: #5a5a5a;
+}
+tr.confInfoTr td.confInfoValTd {
+    /*color: #5a5a5a;*/
+    /*text-align: left;*/
+}
+td.confInfoValTd p.confValueP {
+    float: left;
+    margin-left: 30px;
+    text-align: left;
+    font-size: 15px;
+    color: #333;
+}
+div.mainConfContent div.rightSideBar {
+    /*display: inline-block;*/
+    float: right;
+    width: 21%;
+    height: 1080px;
+    border-left: 0.5px #F3F2F3 solid;
+    /*background-color: #F77844;*/
+}
+div.mainConfContent div.rightSideBar p.sideBarTitle {
+    margin-top: 20px;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    background-color: #dddddd;
+}
+div.rightSideBar ul.confWordList {
+    width: 100%;
+    height: auto;
+}
+ul.confWordList li.confWordItem {
+    width: 100%;
+    height: auto;
+    border: 0.5px #F3F2F3 solid;
+}
+li.confWordItem p.confWordTitle {
+    margin-top: 2px;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    font-size: 16px;
+    background-color: #ececec;
+}
+li.confWordItem div.confWordContent {
+    text-align: left;
+    color: #5a5a5a;
+}

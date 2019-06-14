@@ -1,0 +1,717 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/iget/index.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+首页
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="contentContainer">
+        {#  左边大框架  #}
+        <div id="ccLeftSection">
+            <div class="typeCategory">
+                <span class="pcTypeTitle">笔记本分类</span>
+                <ul id="pcTypeList">
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按品牌</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">华硕</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">惠普</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">戴尔</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">神舟</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">华为</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">荣耀</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">小米</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">机械革命</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">雷神</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">机械师</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">外星人</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">微星</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">ThinkPad</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">联想</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">苹果</a>
+                            </li>
+                            <li class="subMenuItem">
+                                <a class="subItemLink" href="">微软</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按产品定位</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">游戏本</a>
+                            </li>
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">时尚轻薄本</a>
+                            </li>
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">商务办公本</a>
+                            </li>
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">影音娱乐本</a>
+                            </li>
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">校园学生本</a>
+                            </li>
+                            <li class="subMenuItem_pos">
+                                <a class="subItemLink" href="">2合1电脑</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按处理器</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">Core i9</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">Core i7</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">Core i5</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">Core i3</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">Core M</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">其他Intel处理器</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">AMD APU</a>
+                            </li>
+                            <li class="subMenuItem_cpu">
+                                <a class="subItemLink" href="">其他AMD处理器</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按硬盘类型</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem_hd">
+                                <a class="subItemLink" href="">机械硬盘</a>
+                            </li>
+                            <li class="subMenuItem_hd">
+                                <a class="subItemLink" href="">固态硬盘</a>
+                            </li>
+                            <li class="subMenuItem_hd">
+                                <a class="subItemLink" href="">混合硬盘</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按显卡性能等级</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">发烧级显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">性能级显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">专业图形显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">入门级显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">双显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">核心显卡</a>
+                            </li>
+                            <li class="subMenuItem_grp">
+                                <a class="subItemLink" href="">集成显卡</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pcTypeItem">
+                        <a class="pcTypeItemLink" href="#">按屏幕尺寸</a>
+                        <i class="arrow">></i>
+                        <ul class="subMenu">
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">17.3</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">15.6</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">14.0</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">13.3</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">12.5</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">12.0</a>
+                            </li>
+                            <li class="subMenuItem_scr">
+                                <a class="subItemLink" href="">11.6</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="rankBox">
+                <div class="brandRank">
+                    <div class="rankTitle">
+                        <a class="rankTitleLink" href="#" title="点击查看更多">笔记本品牌排行榜<i style="color: #f9513b;font-weight: bold;font-size: 20px;">&nbsp;></i></a>
+                    </div>
+                    <ul class="brandRankList">
+                        {% for brand_rank_info in brand_rank_info_list %}
+                            <li class="brandRankInfoItem">
+                                <table>
+                                    <tr>
+                                        <td style="width: 85px;height: 36px;text-align: center;">
+                                            <span class="brdRankNum">{{ brand_rank_info.ranking }}</span>
+                                        </td>
+                                        <td style="width: 85px;height: 36px;text-align: center;">
+                                            <a class="brdNameLink" href="#">{{ brand_rank_info.brand_name }}</a>
+                                        </td>
+                                        <td style="width: 85px;height: 36px;text-align: center;">
+                                            <span class="brdScore" style="color: #f9513b;">{{ brand_rank_info.score }}</span>
+                                            <span style="color: #333333;">分</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="popularRank">
+                    <div class="rankTitle">
+                        <a class="rankTitleLink" href="#" title="点击查看更多">热门笔记本排行榜<i style="color: #f9513b;font-weight: bold;font-size: 20px;">&nbsp;></i></a>
+                    </div>
+                    <ul class="popularRankList">
+                        {% for popular_rank_prd in popular_rank_prd_list %}
+                            <li class="popularRankPrd">
+                                <div class="prdRankImgAndTitle">
+                                    <a target="_blank" class="imgLink"
+                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_rank_prd.product.prd_serial_number }}">
+                                        <img class="rankPrdImg" src="{{ popular_rank_prd.product.img_url }}"
+                                             alt="图片" title="点击查看详情">
+                                    </a>
+                                    <a target="_blank" class="titleLink"
+                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_rank_prd.product.prd_serial_number }}" title="点击查看详情">
+                                        {{ popular_rank_prd.product.name }}
+                                    </a>
+                                </div>
+                                <div class="priceAndScore">
+                                    <div class="priceBox">
+                                        ￥<span class="rankPrdPrice">{{ popular_rank_prd.priceStatistics.lowest_price }}</span>起
+                                    </div>
+                                    <div class="scoreBox">
+                                        <span class="prdScore">{{ popular_rank_prd.score }}</span>分
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {#  右边大框架  #}
+        <div id="ccRightSection">
+            {#  轮播图和用户板块  #}
+            <div id="rotationAndUser">
+                <div class="rotationChart">
+                    <a href="" title="点击查看详情">
+                        <img width="948" height="320" id="rotationImg" src="{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_8.jpg' %}" alt="轮播图"></a>
+                </div>
+{#                <div class="userChart"></div>#}
+            </div>
+            {#  商品推荐板块  #}
+            <div id="prdRec">
+                {# 高度取决于商品的高度，每行四个共两行 #}
+                <div class="prdRecSection">
+                    <div class="headBox">
+                        <div id="popularFav" class="headTitle">热门收藏</div>
+                        <div class="headMore"><a id="popularFavMoreLink" class="moreLink" title="点击换一批推荐">换一批？</a></div>
+                    </div>
+                    <div class="prdsBox">
+                        <ul id="popular_fav_ul" class="prdList">
+                            {% for popular_fav_prd_info in popular_fav_prd_infos %}
+                                <li class="prdItem">
+                                    <a target="_blank" class="prdImgLink"
+                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_fav_prd_info.product.prd_serial_number }}" title="点击查看详情">
+                                        <img width="220" height="160" class="prdImg" src="{{ popular_fav_prd_info.product.img_url }}" alt="产品图片">
+                                    </a>
+                                    <div class="prdInfo">
+                                        <table style="width: 220px; height: 50px;">
+                                            <tr>
+                                                <td style="width: 220px; height: 50px;text-align: left;">
+                                                    <a target="_blank" class="prdTitleLink"
+                                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_fav_prd_info.product.prd_serial_number }}"
+                                                       title="点击查看详情">{{ popular_fav_prd_info.product.name }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="prdPrice">
+                                            ￥<span class="lowestPrice">{{ popular_fav_prd_info.priceStatistics.lowest_price }}</span>起
+                                        </p>
+                                        <div class="mall_fav_compare">
+                                            <a target="_blank" class="mallNum"
+                                               href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_fav_prd_info.product.prd_serial_number }}">
+                                                <span class="mallNum mallNum_span">{{ popular_fav_prd_info.priceStatistics.mall_num }}</span>家在售
+                                            </a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addFav" name="{{ popular_fav_prd_info.product.prd_serial_number }}">收藏</a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addCompare" name="{{ popular_fav_prd_info.product.prd_serial_number }}">对比</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+{#                <div class="prdRecBox">热门推荐</div>#}
+                <div class="prdRecSection">
+                    <div class="headBox">
+                        <div id="popularRec" class="headTitle">热门推荐</div>
+                        <div class="headMore"><a id="popularRecMoreLink" class="moreLink" title="点击换一批推荐">换一批？</a></div>
+                    </div>
+                    <div class="prdsBox">
+                        <ul id="popular_rec_ul" class="prdList">
+                            {% for popular_rec_prd_info in popular_rec_prd_infos %}
+                                <li class="prdItem">
+                                    <a target="_blank" class="prdImgLink"
+                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_rec_prd_info.product.prd_serial_number }}" title="点击查看详情">
+                                        <img width="220" height="160" class="prdImg" src="{{ popular_rec_prd_info.product.img_url }}" alt="产品图片">
+                                    </a>
+                                    <div class="prdInfo">
+                                        <table style="width: 220px; height: 50px;">
+                                            <tr>
+                                                <td style="width: 220px; height: 50px;text-align: left;">
+                                                    <a target="_blank" class="prdTitleLink"
+                                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_rec_prd_info.product.prd_serial_number }}"
+                                                       title="点击查看详情">{{ popular_rec_prd_info.product.name }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="prdPrice">
+                                            ￥<span class="lowestPrice">{{ popular_rec_prd_info.priceStatistics.lowest_price }}</span>起
+                                        </p>
+                                        <div class="mall_fav_compare">
+                                            <a target="_blank" class="mallNum"
+                                               href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_rec_prd_info.product.prd_serial_number }}">
+                                                <span class="mallNum mallNum_span">{{ popular_rec_prd_info.priceStatistics.mall_num }}</span>家在售
+                                            </a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addFav" name="{{ popular_rec_prd_info.product.prd_serial_number }}">收藏</a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addCompare" name="{{ popular_rec_prd_info.product.prd_serial_number }}">对比</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+{#                <div class="prdRecBox">大家在看</div>#}
+                <div class="prdRecSection">
+                    <div class="headBox">
+                        <div id="popularViews" class="headTitle">大家在看</div>
+                        <div class="headMore"><a id="popularViewMoreLink" class="moreOtherLink" title="点击换一批推荐">换一批？</a></div>
+                    </div>
+                    <div class="prdsBox">
+                        <ul id="popular_view_ul" class="prdList">
+                            {% for popular_view_prd_info in popular_view_prd_infos %}
+                                <li class="prdItem">
+                                    <a target="_blank" class="prdImgLink"
+                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_view_prd_info.product.prd_serial_number }}" title="点击查看详情">
+                                        <img width="220" height="160" class="prdImg" src="{{ popular_view_prd_info.product.img_url }}" alt="产品图片">
+                                    </a>
+                                    <div class="prdInfo">
+                                        <table style="width: 220px; height: 50px;">
+                                            <tr>
+                                                <td style="width: 220px; height: 50px;text-align: left;">
+                                                    <a target="_blank" class="prdTitleLink"
+                                                       href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_view_prd_info.product.prd_serial_number }}"
+                                                       title="点击查看详情">{{ popular_view_prd_info.product.name }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="prdPrice">
+                                            ￥<span class="lowestPrice">{{ popular_view_prd_info.priceStatistics.lowest_price }}</span>起
+                                        </p>
+                                        <div class="mall_fav_compare">
+                                            <a target="_blank" class="mallNum"
+                                               href="{% url 'products:get_product_detail' %}?prd_serial_number={{ popular_view_prd_info.product.prd_serial_number }}">
+                                                <span class="mallNum mallNum_span">{{ popular_view_prd_info.priceStatistics.mall_num }}</span>家在售
+                                            </a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addFav" name="{{ popular_view_prd_info.product.prd_serial_number }}">收藏</a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addCompare" name="{{ popular_view_prd_info.product.prd_serial_number }}">对比</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+    <script>
+        $(document).ready(function () {
+            {# 对比框 #}
+            $prd_compare_box = $("#prd_compare_box");
+            var popular_fav_li_list = $("#popular_fav_ul li");
+            var popular_rec_li_list = $("#popular_rec_ul li");
+            var popular_view_li_list = $("#popular_view_ul li");
+            $rotationImg = $("#rotationImg");
+            var img_list = [
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_0.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_1.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_2.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_3.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_4.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_5.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_6.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_7.jpg' %}",
+                "{% static 'media/system_default/index_rotation_imgs/pc_rotaitor_8.jpg' %}",
+            ];
+            {# 设置首页的轮播图，伪轮播图 #}
+            setInterval(function () {
+                $rotationImg.attr("src", img_list[getRandom(img_list.length)]);
+            }, 3000);
+            {# 热门收藏，热门推荐，大家在看的换一批功能 #}
+            $("#popularFavMoreLink").click(function () {
+                $.ajax({
+                    url: "{% url 'dataStatistics:ajax_get_popular_fav' %}",
+                    type: 'get',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        set_popular_product_info(popular_fav_li_list, data);
+                    }
+                });
+            });
+            $("#popularRecMoreLink").click(function () {
+                $.ajax({
+                    url: "{% url 'dataStatistics:ajax_get_popular_rec' %}",
+                    type: 'get',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        set_popular_product_info(popular_rec_li_list, data);
+                    }
+                });
+            });
+            $("#popularViewMoreLink").click(function () {
+                $.ajax({
+                    url: "{% url 'dataStatistics:ajax_get_people_view' %}",
+                    type: 'get',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        set_popular_product_info(popular_view_li_list, data);
+                    }
+                });
+            });
+            {# 添加收藏 #}
+            $("a.addFav").click(function () {
+                prd_serial_number = $(this).attr("name");
+                $.ajax({
+                    url: "{% url 'dataStatistics:ajax_add_prd_to_fav' %}?prd_serial_number=" + prd_serial_number,
+                    type: 'get',
+                    dataType: 'json',
+                    cache: false,
+                    success: function (data) {
+                        if(data['is_completed'] === "true")
+                            $.growl({title: "", message: "收藏成功，请前往我的收藏查看"});
+                        else
+                        if(data['already_added'] === "true")
+                            $.growl.error({title: "", message: "您已收藏过该商品，请勿重复收藏"});
+                        else if(data['is_login'] === "false")
+                            $.growl.error({title: "", message: "您尚未登录，请先登录"});
+                        else
+                            $.growl.error({title: "", message: "收藏失败，请重试"});
+                    }
+                });
+            });
+            {# 添加对比 #}
+            $("a.addCompare").click(function () {
+                {# 首先显示对比框及其数据 #}
+                if($prd_compare_box.is(":hidden"))
+                    $prd_compare_box.show();
+                set_compare_prd_info();
+                compare_prd_serial_number = $(this).attr("name");
+                {# 触发对比事件后，首先检查对比框中已有的对比产品数，如果小于4个，则可继续添加，否则提示用户对比框产品数已满 #}
+                {# 首先从本地获取曾经做过对比的产品，检查是否有当前选中的对比产品。如果有，则从本地取，否则从ajax请求获取 #}
+                {# data_example_0是localPrdDict的形式举例 #}
+                localPrdDict = get_localPrdDict();
+                var is_curSerialNum_exist = is_in_localPrdDict(compare_prd_serial_number);
+                cur_prd_info = is_curSerialNum_exist ? localPrdDict[compare_prd_serial_number] : null;
+
+                {# 首先获取sessionStorage中的对比产品数 #}
+                compareBox_prd_dict = get_comparePrdDict();
+                prd_info = null;
+                {# 在localStorage中检查是否存在当前选中的产品，如果不存在，则添加进去 #}
+                if(cur_prd_info != null) {
+                    prd_info = cur_prd_info;
+                }
+                else {
+                    prd_info = get_prd_info(compare_prd_serial_number);
+                    {# 获取之后要存入本地localPrdDict中 #}
+                    localPrdDict[compare_prd_serial_number] = prd_info;
+                    localStorage.setItem("localPrdDict", JSON.stringify(localPrdDict));
+                }
+                {# 如果是新会话，则需要重新创建sessionStorage #}
+                if(compareBox_prd_dict === null) {
+                    {#k = prd_info['product']['prd_serial_number'];#}
+                    compareBox_prd_dict = {};
+                    {#compareBox_prd_dict[k] = prd_info;#}
+                    sessionStorage.setItem("compareBox_prds", JSON.stringify(compareBox_prd_dict));
+                    refresh_compareBox(compareBox_prd_dict);
+                }
+                else {
+                    {#compareBox_prd_dict = JSON.parse(compareBox_prd_dict);#}
+                    compare_prd_length = Object.keys(compareBox_prd_dict).length;
+                    {# 判断对比框中的产品数 #}
+                    if(compare_prd_length < 4) {
+                        compareBox_prd_dict[compare_prd_serial_number] = prd_info;
+                        sessionStorage.setItem("compareBox_prds", JSON.stringify(compareBox_prd_dict));
+                        refresh_compareBox(compareBox_prd_dict);
+                    }
+                    else {
+                        $.growl.error({title: "", message: "对比栏中的产品数已满，请先删除您不想对比的产品"});
+                    }
+                }
+            });
+            {# 当光标移动至li区域时，如果有产品，则显示删除按钮,离开时隐藏 #}
+            $("li.comparePrdItem").mouseenter(function () {
+                cur_li = $(this);
+                if(cur_li.find("a.compare_prd_delete_link").attr("name") === "null") {
+                }
+                else
+                    $(this).find("a.compare_prd_delete_link").show();
+            }).mouseleave(function () {
+                $(this).find("a.compare_prd_delete_link").hide();
+            });
+            {# 删除对比框中指定的产品 #}
+            $("a.compare_prd_delete_link").click(function () {
+                cur_prd_serial_num = $(this).attr("name");
+                delete_compare_prd(cur_prd_serial_num);
+            });
+            {# 监听对比按钮 #}
+            $compare_submit = $("#compare_submit");
+            $compare_submit.click(function () {
+                tar_href = $compare_submit.attr("name");
+                window.open(tar_href, '_blank');
+            });
+            {# 删除对比框中的全部产品 #}
+            $("#delete_all_compare_prd").click(function () {
+                compared_prd_dict = get_comparePrdDict();
+                compared_prd_serial_numbers = Object.keys(compared_prd_dict);
+                for(i = 0; i < compared_prd_serial_numbers.length; i++) {
+                    delete_compare_prd(compared_prd_serial_numbers[i]);
+                }
+                refresh_compareBox({});
+            });
+            {# 隐藏对比框 #}
+            $("#hidden_compare").click(function () {
+                $prd_compare_box.hide();
+            });
+            {# 回顶部 #}
+            $to_top_img = $("#to_top_img");
+            $to_top_img.mouseenter(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+            }).mouseleave(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+            });
+        });
+        function set_popular_product_info(li_list, product_info_list) {
+            for(i=0; i < li_list.length; i++) {
+                $(li_list[i]).find("a.prdImgLink").attr("href",
+                    "{% url 'products:get_product_detail' %}?prd_serial_number=" +
+                    product_info_list[i]['product']['prd_serial_number']);
+                $(li_list[i]).find("img.prdImg").attr("src", product_info_list[i]['product']['img_url']);
+                $(li_list[i]).find("a.prdTitleLink").attr("href",
+                    "{% url 'products:get_product_detail' %}?prd_serial_number=" +
+                    product_info_list[i]['product']['prd_serial_number']).text(product_info_list[i]['product']['name']);
+                $(li_list[i]).find("p.prdPrice span.lowestPrice").text(product_info_list[i]['priceStatistics']['lowest_price']);
+                $(li_list[i]).find("a.mallNum").attr("href",
+                    "{% url 'products:get_product_detail' %}?prd_serial_number=" +
+                    product_info_list[i]['product']['prd_serial_number']);
+                $(li_list[i]).find("a.mallNum span.mallNum_span").text(product_info_list[i]['priceStatistics']['mallNum']);
+            }
+        }
+        function getRandom(n) {
+            return Math.floor(Math.random()*n);
+        }
+        function get_prd_info(prd_serial_number) {
+            tar_prd_info = null;
+            $.ajax({
+                url: "{% url 'operations:ajax_get_prd_info' %}?prd_serial_number=" + prd_serial_number,
+                type: 'get',
+                dataType: 'json',
+                cache: false,
+                async: false,
+                success: function (data) {
+                    tar_prd_info = data;
+                }
+            });
+
+            return tar_prd_info;
+        }
+        function refresh_compareBox(compareBox_prd_dict) {
+            compare_li_list = $("ul.compare_ul li.comparePrdItem");
+            prd_serial_nums = Object.keys(compareBox_prd_dict);
+            prd_count = prd_serial_nums.length;
+            for(i = 0; i < prd_count; i++) {
+                prd_li = $(compare_li_list[i]);
+                prd_info_dict = compareBox_prd_dict[prd_serial_nums[i]];
+                prd_name = prd_info_dict['product']['name'];
+                prd_serial_num = prd_info_dict['product']['prd_serial_number'];
+                prd_detail_link = "{% url 'products:get_product_detail' %}?prd_serial_number=" + prd_serial_num;
+                prd_img_url = prd_info_dict['product']['img_url'];
+                prd_price = prd_info_dict['priceStatistics']['lowest_price'];
+
+                prd_li.find("div.img_box a").attr("href", prd_detail_link);
+                prd_li.find("div.img_box a img.compare_prd_img").attr("src", prd_img_url);
+                prd_li.find("a.compare_prd_title").attr("href", prd_detail_link).text(prd_name).css("color", "#5a5a5a");
+                prd_li.find("td.compare_prd_price").text(prd_price);
+                prd_li.find("a.compare_prd_delete_link").attr("name", prd_serial_num).hide();
+            }
+            {# 如果对比的产品数小于4，则设置为空 #}
+            for(i = 0; i < 4-prd_count; i++) {
+                {# 倒序置空 #}
+                prd_li = $(compare_li_list[4-i-1]);
+
+                prd_li.find("div.img_box a").removeAttr("href");
+                prd_li.find("div.img_box a img.compare_prd_img").attr("src", "{% static 'media/system_default/default_compared_pc.png' %}");
+                prd_li.find("a.compare_prd_title").removeAttr("href").text("您可以继续添加对比产品").css("color", "#198ef6");
+                prd_li.find("td.compare_prd_price").text("");
+                prd_li.find("a.compare_prd_delete_link").attr("name", "null").hide();
+            }
+            if(prd_count < 2) {
+                $("#compare_submit").css("background", "#5a5a5a").attr("name", "").attr("disabled", "disabled");
+            }
+            else {
+                $("#compare_submit").css("background", "#DF4100").attr("name", set_compare_prd_href()).removeAttr("disabled");
+            }
+        }
+        function set_compare_prd_info() {
+            compareBox_prd_dict = get_comparePrdDict();
+            refresh_compareBox(compareBox_prd_dict);
+        }
+        function delete_compare_prd(prd_serial_number) {
+            compareBox_prd_dict = get_comparePrdDict();
+            delete compareBox_prd_dict[prd_serial_number];
+            sessionStorage.setItem("compareBox_prds", JSON.stringify(compareBox_prd_dict));
+            refresh_compareBox(compareBox_prd_dict);
+        }
+        function get_localPrdDict() {
+            if(localStorage.hasOwnProperty("localPrdDict") === false) {
+                data_example_0 = {
+                    "prd_serial_number_1": {
+                        "product": {
+                            "img_url": "sdjkfl",
+                            "name": "kdfjsklf",
+                            "prd_serial_number": "dkfjslfjs"
+                        },
+                        "priceStatistics": {
+                            "lowest_price": "3958",
+                            "mall_num": "3"
+                        }
+                    }
+                };
+                localStorage.setItem("localPrdDict", JSON.stringify(data_example_0));
+            }
+            return JSON.parse(localStorage.getItem("localPrdDict"));
+        }
+        function get_comparePrdDict() {
+            if(sessionStorage.hasOwnProperty("compareBox_prds") === false) {
+                {# data_example_1是compareBox_prd_dict的形式举例 #}
+                {#localPrdDict = get_localPrdDict();#}
+                {#localPrdDict_length = Object.keys(localPrdDict).length;#}
+                {#random_serial_number = Object.keys(localPrdDict)[getRandom(localPrdDict_length)];#}
+                {#random_prd = localPrdDict[random_serial_number];#}
+                data_example_1 = {};
+                {#data_example_1[random_serial_number] = random_prd;#}
+                sessionStorage.setItem("compareBox_prds", JSON.stringify(data_example_1));
+            }
+            compareBox_prd_dict = JSON.parse(sessionStorage.getItem("compareBox_prds"));
+            {#compareBox_prd_dict = sessionStorage.getItem("compareBox_prds");#}
+
+            return compareBox_prd_dict;
+        }
+        function is_in_localPrdDict(serial_number) {
+            is_in = false;
+            for(key in Object.keys(get_localPrdDict())) {
+                if(key === serial_number) {
+                    is_in = true;
+                    break;
+                }
+            }
+            return is_in;
+        }
+        function set_compare_prd_href() {
+            compared_prd_serial_num_list = Object.keys(get_comparePrdDict());
+            compare_prd_num = compared_prd_serial_num_list.length;
+            key_str = "";
+            for(i = 0; i < compare_prd_num - 1; i++) {
+                key_str += "prd_" + String(i) + "=" + compared_prd_serial_num_list[i] + "&";
+            }
+            key_str += "prd_" + String(compare_prd_num - 1) + "=" + compared_prd_serial_num_list[compare_prd_num - 1];
+            target_href = "{% url 'operations:compare_prd' %}?" + key_str;
+
+            return target_href;
+        }
+    </script>
+{% endblock %}

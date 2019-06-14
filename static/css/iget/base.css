@@ -1,0 +1,705 @@
+@charset "UTF-8";
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font: 13px Arial 宋体;
+    text-align: center;
+    word-break: break-all;
+    word-wrap: break-word;
+    /*overflow: hidden;*/
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+ul li {
+    display: inline-block;
+}
+/*总布局 start*/
+#global-Container {
+    /*15.6屏：width: 1351px;*/
+    width: 100%;
+    height: 2800px;
+    /*background: lightblue;*/
+}
+
+/*header, nav和footer的height总和为：
+150 + 40 + 210 = 400
+*/
+
+/*顶部：顶部导航栏 (logo,搜索,二维码)栏*/
+#main-topHeader {
+    width: 100%;
+    height: 150px;
+    /*background-color: lightgray;*/
+}
+/*顶部功能导航栏：首页 热门推荐 热门收藏 大家在看 排行榜 网站导航*/
+#main-funcNav {
+    width: 100%;
+    height: 40px;
+    background-color: #f9513b;
+}
+/*中间部分：取决于内容大小*/
+#main-content {
+    width: 100%;
+    height: 2450px;
+    /*background-color: darkgrey;*/
+}
+/*产品对比框*/
+#prd_compare_box {
+    width: 85%;
+    height: 150px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px;
+    left: 7.5%;
+    background: #dddddd;
+    border: 0.5px #5A5A5A solid;
+}
+#prd_compare_box .compare_head {
+    width: 100%;
+    height: 25px;
+    background: #dddddd;
+}
+#prd_compare_box .compare_head .compare_title {
+    float: left;
+    width: 100px;
+    height: 100%;
+    font-weight: bold;
+}
+#prd_compare_box .compare_head .compare_hidden_button {
+    float: right;
+    width: 100px;
+    height: 100%;
+    color: #E51106;
+    text-decoration: underline;
+}
+.compare_hidden_button:hover {
+    cursor: pointer;
+}
+#prd_compare_box .compare_content {
+    width: 100%;
+    height: 122px;
+    background: white;
+}
+div.compare_ul_box {
+    display: inline-block;
+    width: 1070px;
+    height: 100%;
+}
+#prd_compare_box .compare_content ul.compare_ul {
+    float: left!important;
+}
+#prd_compare_box .compare_content .compare_submit {
+    display: inline-block;
+    width: 75px;
+    height: 100%;
+    text-align: center;
+}
+#prd_compare_box .compare_content ul.compare_ul li.comparePrdItem {
+    float: left !important;
+    height: 120px;
+    width: 265px;
+    border-right: 0.1px #f3edc2 solid;
+    background: white;
+}
+ul.compare_ul li.comparePrdItem div.img_box {
+    float: left;
+    width: 80px;
+    height: 120px;
+    /*background-color: #f3edc2;*/
+}
+div.img_box img.compare_prd_img {
+    width: 80px;
+    height:70px;
+    margin-top: 30px;
+}
+ul.compare_ul li.comparePrdItem div.prd_info_box {
+    float: right;
+    width: 183px;
+    height: 120px;
+    /*background-color: #F3F2F3;*/
+}
+li.comparePrdItem div.prd_info_box div.prd_title {
+    width: 100%;
+    height: 90px;
+    /*background-color: #cacaca;*/
+}
+li.comparePrdItem div.prd_info_box div.price_delete_box {
+    width: 100%;
+    height: 30px;
+    /*background-color: #dddddd;*/
+}
+div.price_delete_box div.prd_price {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: #F77844;
+}
+div.price_delete_box div.delete_btn {
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color: #f3edc2;
+}
+#compare_submit {
+    width: 100%;
+    height: 40px;
+    background-color: #DF4100;
+    border-radius: 5px;
+}
+#compare_submit:hover {
+    cursor: pointer;
+}
+td.compare_prd_price {
+    color: #E51106;
+    font-size: 15px;
+}
+a.compare_prd_delete_link {
+    color: #198ef6;
+}
+a.compare_prd_delete_link:hover {
+    color: #E51106;
+    text-decoration: underline;
+}
+#delete_all_compare_prd {
+    color: #198ef6;
+}
+/*回顶部*/
+#back_to_top {
+    text-align: center;
+    position: fixed;
+    bottom: 40px;
+    right: 1%;
+}
+/*底部：底部网站信息栏 底部版权信息栏*/
+#main-footer {
+    width: 100%;
+    height: 210px;
+    /*background-color: gray;*/
+}
+/*总布局 end*/
+
+/*局部基础布局 start*/
+/*#topHeader*/
+#topNavBox {
+    width: 100%;
+    height: 25px;
+    margin-bottom: 6px;
+    background-color: #fbfbfb;
+    border-bottom: 1px #F3F2F3 solid;
+}
+#topNav {
+    /*
+    参照：15.6屏：width: 1351px;
+    计算得：width: 1216px;
+    */
+    width: 90%;
+    height: 25px;
+    margin-bottom: 6px;
+}
+#topLogo_Search_QRBox {
+    /*
+    参照：15.6屏：width: 1351px;
+    计算得：width: 1216px;
+    */
+    width: 90%;
+    height: 110px;
+    overflow: hidden;
+    /*font-size: 0;*/
+    /*background-color: lightblue;*/
+}
+/*#main-FuncNav*/
+#funcNavList {
+    /*
+    参照：15.6屏：width: 1351px;
+    计算得：width: 1013.25px;
+    */
+    width: 75%;
+    height: 40px;
+    /*background-color: lightblue;*/
+}
+/*#main-ContentBase*/
+
+/*#main-Footer*/
+#footNavBox {
+    /*
+    参照：15.6屏：width: 1351px;
+    计算得：width: 1216px;
+    */
+    width: 90%;
+    height: 180px;
+    background-color: #FFF;
+    margin-top: 25px;
+    /*margin-bottom: 15px;*/
+}
+#copyRightBox {
+    width: 100%;
+    height: 30px;
+    background-color: #333333;
+    /*margin-top: 30px;*/
+}
+/*局部基础布局 end*/
+
+/*局部外层详细布局 start*/
+/*#topNavBox*/
+#topNavLeft {
+    float: left;
+    /*
+    参照topNav的width: 1216px;
+    计算得：width: 304px;
+    */
+    width: 25%;
+    height: 25px;
+    /*background-color: paleturquoise;*/
+}
+#topNavRight {
+    /*
+    参照topNav的width: 1216px;
+    计算得：width: 486.40px;
+    */
+    float: right;
+    width: 40%;
+    height: 25px;
+    /*background-color: paleturquoise;*/
+}
+
+/*#topLogo_Search_QRBox*/
+#siteLogo {
+    float: left;
+    /*
+    参照topLogo_Search_QRBox的width: 1216px;
+    计算得：width: 243.2px;
+    */
+    width: 20%;
+    height: 110px;
+    /*background-color: darkgrey;*/
+}
+#topSearch {
+    float: left;
+    /*
+    参照topLogo_Search_QRBox的width: 1216px;
+    计算得：width: 729.6px;
+    */
+    width: 60%;
+    height: 110px;
+    /*background-color: lightslategray;*/
+}
+#qrCode {
+    float: right;
+    /*
+    参照topLogo_Search_QRBox的width: 1216px;
+    计算得：width: 243.2px;
+    */
+    width: 20%;
+    height: 110px;
+    /*background-color: dimgray;*/
+}
+/*#funcNavList*/
+.funcNavItem {
+    /*
+    参照funcNavList的width: 1013.25px;
+    计算得：width: 152.00px;
+    */
+    width: 15%;
+    height: 40px;
+    line-height: 40px;
+}
+/*#footNavBox*/
+#footNavLeft {
+    float: left;
+    /*
+    参照footNavBox的width: 1216px;
+    计算得：width: 243.2px;
+    */
+    width: 20%;
+    height: 160px;
+    line-height: 160px;
+}
+#footNavCenter {
+    float: left;
+    /*
+    参照footNavBox的width: 1216px;
+    计算得：width: 723.52px;
+    */
+    width: 59.5%;
+    height: 160px;
+    line-height: 160px;
+    border-left: 1px darkgray solid;
+    border-right: 1px darkgray solid;
+    /*background-color: lightslategray;*/
+}
+#footNavRight {
+    float: right;
+    /*
+    参照footNavBox的width: 1216px;
+    计算得：width: 243.2px;
+    */
+    width: 20%;
+    height: 160px;
+    line-height: 160px;
+}
+/*#copyRightBox*/
+#copyRightList {
+    height: 30px;
+    line-height: 30px;
+    color: #dddddd;
+}
+.copyRightItemLink {
+    color: #dddddd;
+}
+.copyRightItemLink:hover {
+    color: darkgrey;
+}
+/*局部外层详细布局 end*/
+
+
+/*局部内层详细样式设计 start*/
+
+/*topNavBox下的topNavLeft和topNavRight*/
+/*topNavLeft*/
+#topNavLeft {
+    /*靠左, 居中*/
+    line-height: 25px;
+    text-align: left;
+    color: #5a5a5a;
+}
+/*topNavRight & topNavList*/
+#topNavRight, #topNavList {
+    /*靠右, 居中*/
+    line-height: 25px;
+    text-align: right;
+    color: #5a5a5a;
+}
+.topNavItemLink, .logoutLink {
+    color: #5a5a5a;
+}
+a.topNavItemLink:hover, a.logoutLink:hover {
+    color: red;
+}
+
+/*topLogo_Search_QRBox下的siteLogo, topSearch, qrCode start*/
+/*siteLogo*/
+#siteLogo {
+    text-align: left;
+}
+#logoImg {
+    /*
+    参照siteLogo的width: 243.2px;
+    计算得：width: 200px;
+    */
+    width: 83%;
+    /*也可以设置logo不随网页缩放而变化*/
+    /*width: 200px;*/
+    height: 100%;
+}
+/*topSearch*/
+#topSearchBox {
+    /*
+    参照topSearch的width: 729.6px;
+    计算得：width: 518.02px;
+    */
+    width: 71%;
+    height: 41px;
+    line-height: 41px;
+    margin-top: 37px;
+    border: 2px #f9513b solid;
+    border-radius: 25px !important;
+    /*background-color: #fff;*/
+}
+#topSearchBox:hover {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+}
+#topSearchForm {
+    /*
+    参照topSearchBox的width: 518.02px;
+    计算得：width: 497.30px;
+    */
+    width: 96%;
+    height: 40px;
+    line-height: 110px;
+    border-radius: 25px !important;
+    overflow: hidden;
+}
+#skInput {
+    float: left;
+    /*display: inline-block;*/
+    /*
+    参照topSearchBox的width: 518.02px;
+    计算得：width: 447.5px(90%);
+    */
+    width: 88%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    border-radius: 10px !important;
+    /*background-color: lightskyblue;*/
+}
+#searchKey {
+    /*
+    参照skInput的width: 447.5px;
+    计算得：width: 447.5px;
+    */
+    width: 100%;
+    height: 40px;
+    /*line-height: 110px;*/
+    text-align: left;
+    border: none;
+    outline: none;
+    border-radius: 10px !important;
+    /*background-color: lightskyblue;*/
+}
+#skBtn {
+    float: left;
+    /*display: inline-block;*/
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10px !important;
+    /*background-color: gray;*/
+}
+#searchBtn {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    color: #5A5A5A;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px !important;
+}
+#searchBtn:hover {
+    /*当鼠标放在提交按钮上时, 变成小手*/
+    cursor: pointer;
+    color: orangered;
+}
+/*qrCode*/
+#qrCodeBox {
+    float: right;
+    width: 50%;
+    height: 110px;
+    /*background-color: #fff;*/
+}
+#qrText {
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    color: darkgray;
+}
+#qrImg {
+    /*此处可以不用随屏宽变动*/
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+}
+.qrCodeImg {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+}
+.qrCodeImg:hover {
+    cursor: pointer;
+    /*width:90px;*/
+    /*height: 90px;*/
+}
+/*topLogo_Search_QRBox下的siteLogo, topSearch和qrCode end*/
+
+/*funcNavList下的funcNavItem中的funcNavItemLink start*/
+.funcNavItem {
+    text-align: center;
+}
+.funcNavItemLink {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    color: #333;
+    /*行内块级元素, 使得整个li区域都能触发链接请求*/
+    display: inline-block;
+}
+.funcNavItemLink:hover {
+    background-color: #E51106;
+    font-size: 17px;
+}
+/*funcNavList下的funcNavItem中的funcNavItemLink end*/
+
+
+/*footNavBox下的footNavLeft, footNavCenter, footNavRight start*/
+/*footNavLeft*/
+#footNavLeftBox {
+    /*
+    参照footNavLeft的width: 243.2px;
+    计算得：width: 243.2px;
+    */
+    float: left;
+    width: 100%;
+    height: 160px;
+    line-height: 160px;
+    overflow: hidden;
+}
+#downApp {
+    float: left;
+    /*
+    参照footNavLeftBox的width: 243.2px;
+    计算得：width: 243.2px;
+    */
+    width: 100%;
+    height: 110px;
+    line-height: 110px;
+}
+#footQrImg, .footQrCodeImg {
+    /*float: left;*/
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+}
+.footQrCodeImg:hover {
+    cursor: pointer;
+}
+#downInfo {
+    /*float: left;*/
+    display: inline-block;
+    /*
+    参照footNavLeftBox的width: 243.2px;
+    计算得：width: 100px;
+    */
+    width: 41.12%;
+    height: 100px;
+    /*margin-left: 5px;*/
+    overflow: hidden;
+}
+#downDesc {
+    width: 80px;
+    height: 33px;
+    line-height: 33px;
+    text-align: left;
+    color: #5A5A5A;
+    overflow: hidden;
+}
+.downLink_android, .downLink_ios {
+    /*
+    参照footNavLeftBox的width: 243.2px;
+    计算得：width: 90px;
+    */
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    text-align: left;
+    color: #5A5A5A;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+.downLink_android {
+    background-color: lightskyblue;
+}
+.downLink_ios {
+    background-color: springgreen;
+}
+.downLink {
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    text-align: left;
+    color: #5a5a5a;
+    display: inline-block;
+}
+.downLink:hover {
+    color: red;
+}
+#siteDesc {
+    float: left;
+    /*display: inline-block;*/
+    width: 243px;
+    height: 30px;
+    font-size: 25px;
+    text-align: left;
+    color: #5A5A5A;
+    overflow: hidden;
+}
+/*footNavCenter*/
+#footNavCenterBox {
+    /*
+    参照footNavCenter的width: 723.52px;
+    计算得：width: 723.52px;
+    */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+#footNavCenterTitle {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+#footNavCenterArticle {
+    width: 100%;
+    height: 80px;
+    color: #5a5a5a;
+    /*line-height: 80px;*/
+}
+#footNavCenterMalls {
+    text-align:center;
+    font-size: 12px;
+    line-height:30px;
+    /*
+    参照footNavCenterBox的width: 723.52px;
+    计算得：width: 650px;
+    */
+    width: 90%;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.mallSite {
+    color: #5a5a5a;
+}
+.mallSite:hover {
+    color: black;
+}
+/*footNavRight*/
+.swhz {
+    width: 150px;
+    height:30px;
+    line-height:30px;
+    text-align:left;
+    font-size:14px;
+    margin-left:40px;
+    /*margin-bottom: 10px;*/
+}
+.hzItem {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 40px;
+    font-size: 13px;
+    text-align: left;
+    color: #5a5a5a;
+}
+.hzLink {
+    width: 150px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    text-align: left;
+    margin-left: 0;
+    font-size: 13px;
+    color: #5a5a5a;
+}
+.hzLink:hover {
+    font-size: 17px;
+    color: #000;
+    background-color: darkgray;
+}
+/*footNavBox下的footNavLeft, footNavCenter, footNavRight end*/
+
+/*局部内层详细样式设计 end*/

@@ -1,0 +1,79 @@
+{
+  "brand_rank": [
+    {
+      "brand_name": "联想",
+      "ranking": "1",
+      "score": "97.4"
+    },
+    {
+      "brand_name": "惠普",
+      "ranking": "2",
+      "score": "96.6"
+    },
+    {
+      "brand_name": "戴尔",
+      "ranking": "3",
+      "score": "95.3"
+    },
+    {
+      "brand_name": "ThinkPad",
+      "ranking": "4",
+      "score": "95.1"
+    },
+    {
+      "brand_name": "华为",
+      "ranking": "5",
+      "score": "94.8"
+    },
+    {
+      "brand_name": "外星人",
+      "ranking": "6",
+      "score": "93.5"
+    },
+    {
+      "brand_name": "雷神",
+      "ranking": "7",
+      "score": "93.3"
+    },
+    {
+      "brand_name": "a豆",
+      "ranking": "8",
+      "score": "92.8"
+    },
+    {
+      "brand_name": "苹果",
+      "ranking": "9",
+      "score": "92.8"
+    },
+    {
+      "brand_name": "华硕",
+      "ranking": "10",
+      "score": "91.3"
+    },
+    {
+      "brand_name": "神舟",
+      "ranking": "11",
+      "score": "82.3"
+    },
+    {
+      "brand_name": "机械革命",
+      "ranking": "12",
+      "score": "80.4"
+    },
+    {
+      "brand_name": "宏碁",
+      "ranking": "13",
+      "score": "73.8"
+    },
+    {
+      "brand_name": "微软",
+      "ranking": "14",
+      "score": "71.8"
+    },
+    {
+      "brand_name": "玩家国度",
+      "ranking": "15",
+      "score": "68.5"
+    }
+  ]
+}

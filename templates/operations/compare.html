@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/operations/compare.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+产品对比——易得
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <table class="compareTable">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">商品</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        <a class="prdTitle_link" target="_blank"
+                           href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product_info.product.prd_serial_number }}">
+                            {{ product_info.product.name }}
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">图片</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        <img width="80" height="60" src="{{ product_info.product.img_url }}" alt="产品图片">
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">品牌</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        <a target="_blank" href="{{ product_info.brand.site_link }}" style="color: #198ef6;text-decoration: underline;">
+                            {{ product_info.brand.name_cn }}
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">型号</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal" style="text-align: left">
+                        {{ product_info.config.cpu_type }}/
+                        {{ product_info.config.memory_cap }}/
+                        {{ product_info.config.hd_cap }}/
+                        {{ product_info.config.graphics_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">最低报价</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.priceStatistics.lowest_price }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">基本参数</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">上市时间</td>
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.time_to_market }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">产品定位</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.product_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">操作系统</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.os_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">处理器</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">CPU系列</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.cpu_series }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">CPU型号</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.cpu_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">CPU主频</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.cpu_clock_speed }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">CPU睿频</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.cpu_turbo }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">核心数描述</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.core_num }}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">存储设备</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">硬盘类型</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.hd_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">硬盘容量</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.hd_cap }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">内存容量</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.memory_cap }}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">显卡</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">显卡类型</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.graphics_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">显存容量</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.graphics_cap }}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">显示屏</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">屏幕尺寸</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.sc_size }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">屏幕分辨率</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.screen_resolution }}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">电源描述</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">电池类型</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.battery_type }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">续航时间</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.life_time_intro }}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="prdInfosHead configType" colspan="4">外观</td>
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">外壳颜色</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.color }}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td class="prdInfoHead configTitle">机身重量</td>
+                {# 四个 #}
+                {% for product_info in product_info_list %}
+                    <td class="prdInfoVal">
+                        {{ product_info.config.weight }}
+                    </td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

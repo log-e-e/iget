@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{#  css外链文件  #}
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/products/prdConfDetail.css' %}">
+{% endblock %}
+
+{#  网页标题  #}
+{% block title %}
+产品配置——易得
+{% endblock %}
+
+{#  网页内容  #}
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <div class="productTitleDiv">
+            <p class="prdTitle">{{ product.name }}</p>
+            <a class="returnPrdDetail" href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product.prd_serial_number }}" title="点击返回商品详情页">返回产品详情页</a>
+        </div>
+        <div class="mainConfContent">
+            <div class="leftContent">
+                <table class="confInfoTable">
+                    <tr class="confInfosTitle">
+                        <td colspan="2">基本参数</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">上市时间</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.time_to_market }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">产品定位</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.product_type }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">操作系统</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.os_type }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">处理器</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">CPU系列</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.cpu_series }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">CPU型号</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.cpu_type }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">CPU主频</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.cpu_clock_speed }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">CPU睿频</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.cpu_turbo }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">核心数描述</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.core_num }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">存储设备</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">内存容量</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.memory_cap }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">硬盘类型</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.hd_type }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">硬盘容量</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.hd_cap }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">显卡</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">显卡类型</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.graphics_type }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">显存容量</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.graphics_cap }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">显示屏</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">屏幕尺寸</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.sc_size }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">屏幕分辨率</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.screen_resolution }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">电源描述</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">电池类型</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.battery_type }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">续航时间</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.life_time_intro }}</p>
+                        </td>
+                    </tr>
+
+                    <tr class="confInfosTitle">
+                        <td colspan="2">外观</td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">外壳颜色</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.color }}</p>
+                        </td>
+                    </tr>
+                    <tr class="confInfoTr">
+                        <td class="confInfoTitleTd">
+                            <p class="confTitleP">机身重量</p>
+                        </td>
+                        <td class="confInfoValTd">
+                            <p class="confValueP">{{ productConfiguration.weight }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="rightSideBar">
+                <p class="sideBarTitle">配置参数解释</p>
+                <ul class="confWordList">
+                    <li class="confWordItem">
+                        <p class="confWordTitle">CPU系列</p>
+                        <div class="confWordContent">
+                            笔记本CPU主要是Intel和AMD两大系列，Intel主要有赛扬、奔腾、酷睿i3、i5、i7以及Atom系列，i5是目前最具性价比的；
+                            AMD主要有A4、A6、A8、A10及E系列，其中A8系列可选性较高。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">CPU主频</p>
+                        <div class="confWordContent">
+                            主频也叫时钟频率，单位是MHz，用来表示CPU的运算速度。CPU主频包括两部分：外频与倍频，两者的乘积就是主频。
+                            通常较高主频的笔记本能提升一定性能，但只是一方面，并非越高越好。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">内存容量</p>
+                        <div class="confWordContent">
+                            内存的种类和运行频率会对性能有一定影响，不过相比之下，容量的影响更加大。
+                            一般笔记本在2GB~8GB不等，特殊游戏本会在16GB~32GB，建议一般在4GB即可满足日常要求。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">内存类型</p>
+                        <div class="confWordContent">
+                            不同类型的内存传输类型各有差异，在传输率、工作频率、工作方式、工作电压等方面都有不同。
+                            多数笔记本还是采用DDR3，1333MHz和1600MHz；或者DDR3L低电压版，能耗和发热会更低。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">固态硬盘</p>
+                        <div class="confWordContent">
+                            简称SSD，因其快速读写、质量轻、能耗低及体积小等特点，正在逐步替换传统机械硬盘（HDD），
+                            但售价高和寿命限制也是其一选购缺陷，多数笔记本采用SSD作系统盘，机械硬盘作存储盘的理念。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">显卡类型</p>
+                        <div class="confWordContent">
+                            用于笔记本的显卡分为集显、核显和独显。集显和核显主要集成在主板或者CPU上共享系统内存的显卡类型；
+                            独显也称GPU拥有独立的显存。显卡有NVIDIA系列和AMD系列，其中N卡的GTX系列比较常见。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">显存容量</p>
+                        <div class="confWordContent">
+                            显卡本身拥有存储图形、图像数据的存储器，显存的大小决定了显示器分辨率的大小及显示器上能够显示的颜色数。
+                            一般的说显存越大，其性能也越高。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+
+{% endblock %}

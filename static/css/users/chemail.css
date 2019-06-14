@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 900px;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-bottom: 1px #dddddd solid;
+}
+/*中间内容容器*/
+#contentContainer {
+    width: 75%;
+    height: 450px;
+    background-color: #fff;
+}
+.chemailHead {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #5A5A5A;
+    margin-top: 30px;
+    text-align: center;
+    background-color: #F3F2F3;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+}
+.chemailBox {
+    width: 100%;
+    height: 350px;
+    /*border-left: 2px #F3F2F3 solid;*/
+    /*border-right: 2px #F3F2F3 solid;*/
+    /*border-top: 1px gray solid;*/
+}
+.chemailForm {
+    width: 100%;
+    height: 350px;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+    /*border-top: 1px gray solid;*/
+}
+.chemailInputs {
+    display: block;
+}
+.chemailInputItem {
+    display: block;
+}
+.chemailSubmitItem {
+    display: block;
+}
+.chemailInput {
+    width: 240px;
+    height: 30px;
+    font-size: 15px;
+    border: 1px #dddddd solid;
+    border-radius: 5px;
+    text-align: left;
+}
+.inputLine {
+    height: 40px;
+}
+.inputTitle {
+    width: 210px;
+    text-align: right;
+}
+.inputLabel {
+    font-size: 15px;
+}
+.inputContent {
+    text-align: left;
+}
+input.error {
+    background: #ececec;
+}
+td.errorMsgTd {
+    text-align: left;
+    width: 150px;
+}
+label.error {
+    color: #E51106;
+    font-size: 12px;
+}
+.inputSub {
+    /*width: 240px;*/
+    /*height: 30px;*/
+    text-align: center;
+}
+.chemailSubmitBtn {
+    width: 80px;
+    height: 35px;
+    font-size: 18px;
+    border: 1px #dddddd solid;
+    border-radius: 5px;
+}
+.chemailSubmitBtn:hover {
+    cursor: pointer;
+}
+.getCodeLink {
+    color: #5a5a5a;
+    font-size: 12px;
+}
+.getCodeLink:hover {
+    cursor: pointer;
+    color: #E51106;
+    text-decoration: underline;
+}
+.chemailFoot {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: large;
+    color: #5A5A5A;
+    background-color: #F3F2F3;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+}

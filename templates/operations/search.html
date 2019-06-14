@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}搜索结果{% endblock %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/operations/search.css' %}">
+{% endblock %}
+
+{% block mainContent %}
+    <main id="main-content">
+        <div id="marginTopSep"></div>
+        <div id="contentContainer">
+            <div class="leftSideBar">
+                <p class="sideBarTitle">配置参数解释</p>
+                <ul class="confWordList">
+                    <li class="confWordItem">
+                        <p class="confWordTitle">CPU系列</p>
+                        <div class="confWordContent">
+                            笔记本CPU主要是Intel和AMD两大系列，Intel主要有赛扬、奔腾、酷睿i3、i5、i7以及Atom系列，i5是目前最具性价比的；
+                            AMD主要有A4、A6、A8、A10及E系列，其中A8系列可选性较高。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">CPU主频</p>
+                        <div class="confWordContent">
+                            主频也叫时钟频率，单位是MHz，用来表示CPU的运算速度。CPU主频包括两部分：外频与倍频，两者的乘积就是主频。
+                            通常较高主频的笔记本能提升一定性能，但只是一方面，并非越高越好。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">CPU睿频</p>
+                        <div class="confWordContent">
+                            睿频即英特尔睿频加速技术，是intel酷睿i5、i7系列中独有特性，这项技术可以理解为自动超频，当处理器开启了睿频加速之后，
+                            CPU会根据当前的任务量而自动调整处理器主频，从而重任务的时候以发挥最大的性能，而轻任务的时候会发挥最大的节能优势。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">核心/线程数</p>
+                        <div class="confWordContent">
+                            CPU的核心数是指物理上，也就是硬件上存在着几个核心。比如，双核就是包括2个相对独立的CPU核心单元组，四核就包含4个相对独立的CPU核心单元组。
+                            线程数是一种逻辑的概念，简单地说，就是模拟出的CPU核心数。比如，可以通过一个CPU核心数模拟出2线程的CPU，
+                            也就是说，这个单核心的CPU被模拟成了一个类似双核心CPU的功能。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">内存容量</p>
+                        <div class="confWordContent">
+                            内存的种类和运行频率会对性能有一定影响，不过相比之下，容量的影响更加大。
+                            一般笔记本在2GB~8GB不等，特殊游戏本会在16GB~32GB，建议一般在4GB即可满足日常要求。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">内存类型</p>
+                        <div class="confWordContent">
+                            不同类型的内存传输类型各有差异，在传输率、工作频率、工作方式、工作电压等方面都有不同。
+                            多数笔记本还是采用DDR3，1333MHz和1600MHz；或者DDR3L低电压版，能耗和发热会更低。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">固态硬盘</p>
+                        <div class="confWordContent">
+                            简称SSD，因其快速读写、质量轻、能耗低及体积小等特点，正在逐步替换传统机械硬盘（HDD），
+                            但售价高和寿命限制也是其一选购缺陷，多数笔记本采用SSD作系统盘，机械硬盘作存储盘的理念。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">机械硬盘</p>
+                        <div class="confWordContent">
+                            机械硬盘(HDD)即传统型普通硬盘，主要由：盘片、磁头、盘片转轴及控制电机、磁头控制器、数据转换器、接口、缓存等几个部分组成。
+                            如果你是大容量用户，HDD在容量方面的优势非常明显，选择HDD无疑是最佳选择。
+                            如果你是玩游戏和办公的速度需求者，对存储速度有特殊的要求，那么就选择SSD。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">显卡类型</p>
+                        <div class="confWordContent">
+                            用于笔记本的显卡分为集显、核显和独显。集显和核显主要集成在主板或者CPU上共享系统内存的显卡类型；
+                            独显也称GPU拥有独立的显存。显卡有NVIDIA系列和AMD系列，其中N卡的GTX系列比较常见。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">显卡芯片</p>
+                        <div class="confWordContent">
+                            显卡的核心芯片，它的性能好坏直接决定了显卡性能的好坏。显示芯片在显卡中的地位，就相当于电脑中CPU的地位，
+                            是整个显卡的核心。目前设计、制造显示芯片的厂家只有NVIDIA、ATI两家公司。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">显存容量</p>
+                        <div class="confWordContent">
+                            显卡本身拥有存储图形、图像数据的存储器，显存的大小决定了显示器分辨率的大小及显示器上能够显示的颜色数。
+                            一般的说显存越大，其性能也越高。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">屏幕尺寸</p>
+                        <div class="confWordContent">
+                            是指笔记本屏幕对角线的尺寸，一般用英寸来表示。一般都采用15英寸和17英寸的屏幕尺寸，
+                            15英寸左右的屏幕在体积和重量上都是比较易接受的一种尺寸。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">屏幕比例</p>
+                        <div class="confWordContent">
+                            屏幕宽度和高度的比例称为屏幕比例，目前标准屏幕比例一般有4:3和16:9，通常所说的宽屏指的就是16:9的屏幕比例。
+                        </div>
+                    </li>
+                    <li class="confWordItem">
+                        <p class="confWordTitle">屏幕分辨率</p>
+                        <div class="confWordContent">
+                            是指在屏幕的横向与竖向上划分了多少个像素点的乘比，由于屏幕比例不同和显卡输出不同，分辨率也所有不同，
+                            常见的有1920*1080、1366*768等，高分辨率也在普及如3840*2160等。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="rightContent">
+                <div class="filterDiv">
+                    <ul class="select">
+                        <li class="selectList">
+                            <dl id="select1">
+                                <dt>品牌：</dt>
+                                <dd class="selectAll selected"><a class="_1-0" href="#">全部</a></dd>
+                                <dd><a class="_1-1">华硕</a></dd>
+                                <dd><a class="_1-2">惠普</a></dd>
+                                <dd><a class="_1-3">戴尔</a></dd>
+                                <dd><a class="_1-4">苹果</a></dd>
+                                <dd><a class="_1-5">微软</a></dd>
+                                <dd><a class="_1-6">华为</a></dd>
+                                <dd><a class="_1-7">荣耀</a></dd>
+                                <dd><a class="_1-8">小米</a></dd>
+                                <dd><a class="_1-9">ThinkPad</a></dd>
+                                <dd><a class="_1-10">联想</a></dd>
+                                <dd><a class="_1-11">神舟</a></dd>
+                                <dd><a class="_1-12">外星人</a></dd>
+                                <dd><a class="_1-13">机械革命</a></dd>
+                                <dd><a class="_1-14">机械师</a></dd>
+                                <dd><a class="_1-15">雷神</a></dd>
+                                <dd><a class="_1-16">微星</a></dd>
+                                <dd><a class="_1-17">宏碁</a></dd>
+                                <dd><a class="_1-18">三星</a></dd>
+                                <dd><a class="_1-19">a豆</a></dd>
+                                <dd><a class="_1-20">玩家国度</a></dd>
+                                <dd><a class="_1-21">炫龙</a></dd>
+                                <dd><a class="_1-22">LG</a></dd>
+                                <dd><a class="_1-23">雷蛇</a></dd>
+                                <dd><a class="_1-24">清华同方</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select2">
+                                <dt>价格：</dt>
+                                <dd class="selectAll selected"><a class="_2-0">全部</a></dd>
+                                <dd><a class="_2-1">3500元以下</a></dd>
+                                <dd><a class="_2-2">3500-3999元</a></dd>
+                                <dd><a class="_2-3">4000-4999元</a></dd>
+                                <dd><a class="_2-4">5000-5999元</a></dd>
+                                <dd><a class="_2-5">6000-7999元</a></dd>
+                                <dd><a class="_2-6">8000元以上</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select3">
+                                <dt>产品定位：</dt>
+                                <dd class="selectAll selected"><a class="_3-0">全部</a></dd>
+                                <dd><a class="_3-1">游戏本</a></dd>
+                                <dd><a class="_3-2">轻薄笔记本</a></dd>
+                                <dd><a class="_3-3">商务办公本</a></dd>
+                                <dd><a class="_3-4">影音娱乐本</a></dd>
+                                <dd><a class="_3-5">校园学生本</a></dd>
+                                <dd><a class="_3-6">二合一笔记本</a></dd>
+                                <dd><a class="_3-7">移动工作站</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select4">
+                                <dt>CPU系列：</dt>
+                                <dd class="selectAll selected"><a class="_4-0">全部</a></dd>
+                                <dd><a class="_4-1">Core i9</a></dd>
+                                <dd><a class="_4-2">Core i7</a></dd>
+                                <dd><a class="_4-3">Core i5</a></dd>
+                                <dd><a class="_4-4">Core i3</a></dd>
+                                <dd><a class="_4-5">Core M</a></dd>
+                                <dd><a class="_4-6">其他Intel处理器</a></dd>
+                                <dd><a class="_4-7">AMD APU</a></dd>
+                                <dd><a class="_4-8">其他AMD处理器</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select5">
+                                <dt>硬盘容量：</dt>
+                                <dd class="selectAll selected"><a class="_5-0">全部</a></dd>
+                                <dd><a class="_5-1">1TB HDD及以上</a></dd>
+                                <dd><a class="_5-2">500GB HDD</a></dd>
+                                <dd><a class="_5-3">含128GB SSD</a></dd>
+                                <dd><a class="_5-4">含256GB SSD</a></dd>
+                                <dd><a class="_5-5">含512GB SSD</a></dd>
+                                <dd><a class="_5-6">其他硬盘容量</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select6">
+                                <dt>内存容量：</dt>
+                                <dd class="selectAll selected"><a class="_6-0">全部</a></dd>
+                                <dd><a class="_6-1">2G</a></dd>
+                                <dd><a class="_6-2">4G</a></dd>
+                                <dd><a class="_6-3">8G</a></dd>
+                                <dd><a class="_6-4">16G</a></dd>
+                                <dd><a class="_6-5">32G</a></dd>
+                                <dd><a class="_6-6">64G</a></dd>
+                                <dd><a class="_6-7">其他内存容量</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select7">
+                                <dt>显卡性能类型：</dt>
+                                <dd class="selectAll selected"><a class="_7-0">全部</a></dd>
+                                {# 独立显卡 #}
+                                <dd><a class="_7-1">发烧级显卡</a></dd>
+                                <dd><a class="_7-2">性能级显卡</a></dd>
+                                <dd><a class="_7-3">入门级显卡</a></dd>
+                                <dd><a class="_7-4">专业图形显卡</a></dd>
+                                {# 双显卡 #}
+                                <dd><a class="_7-5">双显卡</a></dd>
+                                {# 非独立显卡 #}
+                                <dd><a class="_7-6">核芯显卡</a></dd>
+                                <dd><a class="_7-7">集成显卡</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select8">
+                                <dt>屏幕尺寸：</dt>
+                                <dd class="selectAll selected"><a class="_8-0">全部</a></dd>
+                                <dd><a class="_8-1">17英寸</a></dd>
+                                <dd><a class="_8-2">16英寸</a></dd>
+                                <dd><a class="_8-3">15英寸</a></dd>
+                                <dd><a class="_8-4">14英寸</a></dd>
+                                <dd><a class="_8-5">13英寸</a></dd>
+                                <dd><a class="_8-6">12英寸</a></dd>
+                                <dd><a class="_8-7">11英寸</a></dd>
+                                <dd><a class="_8-8">10英寸</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select9">
+                                <dt>操作系统：</dt>
+                                <dd class="selectAll selected"><a class="_9-0">全部</a></dd>
+                                <dd><a class="_9-1">Windows7</a></dd>
+                                <dd><a class="_9-2">Windows8</a></dd>
+                                <dd><a class="_9-3">Windows10</a></dd>
+                                <dd><a class="_9-4">其他Windows</a></dd>
+                                <dd><a class="_9-5">macOS</a></dd>
+                                <dd><a class="_9-6">DOS/Linux</a></dd>
+                                <dd><a class="_9-7">ChromeOS</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectList">
+                            <dl id="select10">
+                                <dt>上市年份：</dt>
+                                <dd class="selectAll selected"><a class="_9-0">全部</a></dd>
+                                <dd><a class="_10-1">2019年</a></dd>
+                                <dd><a class="_10-2">2018年</a></dd>
+                                <dd><a class="_10-3">2017年</a></dd>
+                                <dd><a class="_10-4">2016年</a></dd>
+                                <dd><a class="_10-5">2015年</a></dd>
+                                <dd><a class="_10-6">2015年之前</a></dd>
+                            </dl>
+                        </li>
+                        <li class="selectResult">
+                            <dl>
+                                <dt>已选条件：</dt>
+                                <dd class="selectNone">暂时没有选择过滤条件</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <div class="searchResultDiv">
+                    <div class="resultHeadNav" id="resultHeadNav">
+                        <div class="resultSort">
+                            <dl>
+                                <dt>排序：</dt>
+                                <dd><a class="onSort_default selected" href="?searchType={{ searchType }}&page=1&sort=default&searchKey={{ searchKey }}#resultHeadNav" title="按默认排序">默认</a></dd>
+                                <dd><a class="onSort_asc" href="?searchType={{ searchType }}&page=1&sort=asc&searchKey={{ searchKey }}#resultHeadNav" title="从低到高排序">升价</a></dd>
+                                <dd><a class="onSort_desc" href="?searchType={{ searchType }}&page=1&sort=desc&searchKey={{ searchKey }}#resultHeadNav" title="从高到低排序">降价</a></dd>
+                            </dl>
+                        </div>
+                        <div class="resultNumAndTurnPage">
+                            <dl>
+                                <dt>共找到&nbsp;<em style="color: red"><span id="head_products_count" style="color: red">{{ products_count }}</span></em>&nbsp;个产品</dt>
+                                <dd>
+                                    <a id="head_previous_page_link" href="?searchType={{ searchType }}&page={{ products_info_page.previous_page_number }}&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav"
+                                       title="上一页"><</a>
+                                </dd>
+                                <dd>
+                                    <em id="head_curPage" class="curPage">{{ products_info_page.cur_page }}</em>&nbsp;/&nbsp;<em id="head_totalPage" class="totalPage">{{ products_info_page.total_page }}</em>
+                                </dd>
+                                <dd><a id="head_next_page_link" href="?searchType={{ searchType }}&page={{ products_info_page.next_page_number }}&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav"
+                                       title="下一页">></a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="resultContent">
+                        <ul class="prdList" id="prdList" style="text-align: left;">
+                            {% for product_info in products_info %}
+                                <li class="prdItem">
+                                    <a target="_blank" class="prdImgLink" href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product_info.product.prd_serial_number }}" title="点击查看详情">
+                                        <img class="prdImg" src="{{ product_info.product.img_url }}" alt="产品图片">
+                                    </a>
+                                    <div class="prdInfo">
+                                        <table style="height: 50px;width: 100%;">
+                                            <tr>
+                                                <td style="height: 45px;width: 220px;text-align: left;">
+                                                    <a target="_blank" class="prdTitleLink" href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product_info.product.prd_serial_number }}"
+                                                       title="点击查看详情">{{ product_info.product.name }}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <p class="prdPrice">
+                                            ￥<span class="lowestPrice">{{ product_info.priceStatistics.lowest_price }}</span>起
+                                        </p>
+                                        <div class="mall_fav_compare">
+                                            <a class="mallNum" href="#">{{ product_info.priceStatistics.mall_num }}&nbsp;家在售</a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addFav">收藏</a>
+    {#                                        <i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>#}
+                                            <a class="addCompare">对比</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="resultTailNav">
+                        {# 此处显示的信息根据搜索结果而定，如果不足20条记录则不显示，超过20条记录则显示 #}
+                        <div class="pageNav">
+                            <dl>
+                                <dt>
+                                    共有&nbsp;
+                                    <em id="tail_products_count" style="color: red;">{{ products_count }}</em>
+                                    &nbsp;条记录，当前页为第&nbsp;
+                                    <em id="tail_curPage" style="color: #E51106;">{{ products_info_page.cur_page }}</em>
+                                    &nbsp;页，共&nbsp;
+                                    <em id="tail_totalPage" style="color: #E51106;">{{ products_info_page.total_page }}</em>
+                                    &nbsp;页，每页&nbsp;20&nbsp;条记录
+                                </dt>
+                                <dd><a id="tail_first_page_link" href="?searchType={{ searchType }}&page=1&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav">首页</a></dd>
+                                <dd><a id="tail_previous_page_link" href="?searchType={{ searchType }}&page={{ products_info_page.previous_page_number }}&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav">上一页</a></dd>
+                                <dd><a id="tail_next_page_link" href="?searchType={{ searchType }}&page={{ products_info_page.next_page_number }}&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav">下一页</a></dd>
+                                <dd><a id="tail_last_page_link" href="?searchType={{ searchType }}&page={{ products_info_page.total_page }}&sort={{ sort }}&searchKey={{ searchKey }}#resultHeadNav">末页</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+<script>
+    $onSort_default = $("a.onSort_default");
+    $onSort_asc = $("a.onSort_asc");
+    $onSort_desc = $("a.onSort_desc");
+    $head_previous_page_link = $("#head_previous_page_link");
+    $head_next_page_link = $("#head_next_page_link");
+    $tail_previous_page_link = $("#tail_previous_page_link");
+    $tail_next_page_link = $("#tail_next_page_link");
+    $tail_first_page_link = $("#tail_first_page_link");
+    $tail_last_page_link = $("#tail_last_page_link");
+
+    $(document).ready(function () {
+        {#  处理排序颜色  #}
+        var sort_href_dict = {
+            'onSort_default': "?searchType={{ searchType }}&page={{ products_info_page.cur_page }}&sort=default&searchKey={{ searchKey }}#resultHeadNav",
+            'onSort_asc': "?searchType={{ searchType }}&page={{ products_info_page.cur_page }}&sort=asc&searchKey={{ searchKey }}#resultHeadNav",
+            'onSort_desc': "?searchType={{ searchType }}&page={{ products_info_page.cur_page }}&sort=desc&searchKey={{ searchKey }}#resultHeadNav",
+        };
+        set_sort("{{ sort }}", sort_href_dict);
+        {# 检控筛选条件的点击 #}
+        {# 个人认为：要在请求之后保证正确的筛选选项，需要如下：点击选项的同时获取已选条件 #}
+        $("#select1 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectA").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectA").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectA a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectA"));
+                }
+            }
+        });
+        $("#select2 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectB").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectB").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectB a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectB"));
+                }
+            }
+        });
+        $("#select3 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectC").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectC").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectC a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectC"));
+                }
+            }
+        });
+        $("#select4 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectD").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectD").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectD a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectD"));
+                }
+            }
+        });
+        $("#select5 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectE").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectE").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectE a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectE"));
+                }
+            }
+        });
+        $("#select6 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectF").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectF").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本及属性值
+                    $("#selectF a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectF"));
+                }
+            }
+        });
+        $("#select7 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectG").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectG").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectG a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectG"));
+                }
+            }
+        });
+        $("#select8 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectH").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectH").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectH a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectH"));
+                }
+            }
+        });
+        $("#select9 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectI").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectI").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectI a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectI"));
+                }
+            }
+        });
+        $("#select10 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("selectAll")) {
+                $("#selectJ").remove();
+            } else {
+                var copyThis = $(this).clone();
+                if ($("#selectJ").length > 0) {
+                    // 如果被选中的条件中已经有了该选项的兄弟节点，则替换文本
+                    $("#selectJ a").html($(this).text()).attr("class", $($(this).children("a")[0]).attr("class"));
+                } else {
+                    // 否则添加
+                    $(".selectResult dl").append(copyThis.attr("id", "selectJ"));
+                }
+            }
+        });
+        {# 如果存在筛选条件，则将提示信息删除 #}
+        $("ul.select dd").on("click", function () {
+            if ($(".selectResult dd").length > 1) {
+                $(".selectNone").hide();
+            } else {
+                $(".selectNone").show();
+            }
+            {#select_list_kv数据类型：二维数组  [[k0, v0], [k1, v1], [k2, v2]]#}
+            selected_list = get_selected();
+            {#alert(select_list_kv);#}
+            {# 转化成键值对字符串 #}
+            var key_str = "";
+            for(i = 0; i < selected_list.length; i++)
+                key_str += "k" + i + "=" + selected_list[i] + ((i !== (selected_list.length - 1)) ? "&" : "");
+            target_request = "{% url 'operations:ajax_get_filter_result' %}?searchType=filter&page=1&sort=default&" + key_str;
+            $.ajax({
+                url: target_request,
+                type: 'get',
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    data = JSON.parse(data);
+                    products_count = data['products_count'];
+                    products_info_page = data['products_info_page'];
+                    products_info = data['products_info'];
+                    sort = data['sort'];
+                    searchType = data['searchType'];
+                    cur_page_num = data['cur_page_num'];
+                    {#selected_filters = data['selected_filters'];#}
+                    {# 暂时不设置无结果选项 #}
+                    none_result_filters = data['none_result_filters'];
+
+                    {# 设置排序信息 #}
+                    var sort_href_dict = {
+                        'onSort_default': "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + cur_page_num + "&sort=default&" + key_str,
+                        'onSort_asc': "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + cur_page_num + "&sort=asc&" + key_str,
+                        'onSort_desc': "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + cur_page_num + "&sort=desc&" + key_str,
+                    };
+                    set_sort(sort, sort_href_dict);
+                    {# 设置数据页数信息 #}
+                    page_link_dict = {
+                        "previous_page_link": "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + products_info_page['previous_page_number'] + "&sort=" + sort + "&" + key_str,
+                        "next_page_link": "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + products_info_page['next_page_number'] + "&sort=" + sort + "&" + key_str,
+                        "first_page_link": "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=1&sort=" + sort + "&" + key_str,
+                        "last_page_link": "{% url 'operations:ajax_get_filter_result' %}?searchType=" + searchType + "&page=" + products_info_page['total_page'] + "&sort=" + sort + "&" + key_str
+                    };
+                    set_page_info(products_count, products_info_page, page_link_dict, searchType);
+                    {# 设置搜索结果信息 #}
+                    set_product_info(products_info);
+                }
+            });
+        });
+        function get_selected() {
+            $selectResult = $(".selectResult a");
+            var selected_list = [];
+            for(i = 0; i < $selectResult.length; i++) {
+                selected_list[i] = $($selectResult[i]).attr("class");
+            }
+            return selected_list;
+        }
+        {# 对比框 #}
+        $prd_compare_box = $("#prd_compare_box");
+        {#$hidden_compare = $("#hidden_compare");#}
+        $("#hidden_compare").click(function () {
+            $prd_compare_box.hide();
+        });
+        $to_top_img = $("#to_top_img");
+        $to_top_img.mouseenter(function () {
+            $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+        }).mouseleave(function () {
+            $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+        });
+    });
+    function set_product_info(products_info) {
+        var prdItem_list = $("#prdList li");
+        for(i=0; i < products_info.length; i++) {
+            $(prdItem_list[i]).find("a.prdImgLink").attr("href", "{% url 'products:get_product_detail' %}?prd_serial_number=" +
+                products_info[i]['product']['prd_serial_number']);
+            $(prdItem_list[i]).find("a.prdTitleLink").attr("href", "{% url 'products:get_product_detail' %}?prd_serial_number=" +
+                products_info[i]['product']['prd_serial_number']);
+            $(prdItem_list[i]).find("img.prdImg").attr("src", products_info[i]['product']['img_url']);
+            $(prdItem_list[i]).find("a.prdTitleLink").text(products_info[i]['product']['name']);
+            $(prdItem_list[i]).find("span.lowestPrice").text(products_info[i]['priceStatistics']['lowest_price']);
+            $(prdItem_list[i]).find("a.mallNum span").text(products_info[i]['priceStatistics']['mallNum']);
+        }
+    }
+    function set_page_info(products_count, products_info_page, page_link_dict, searchType) {
+        if(searchType === 'filter') {
+            $onSort_default.removeAttr("href").click();
+            $onSort_asc.removeAttr("href").click();
+            $onSort_desc.removeAttr("href").click();
+            $head_previous_page_link.removeAttr("href").click();
+            $head_next_page_link.removeAttr("href").click();
+            $tail_previous_page_link.removeAttr("href").click();
+            $tail_next_page_link.removeAttr("href").click();
+            $tail_first_page_link.removeAttr("href").click();
+            $tail_last_page_link.removeAttr("href").click();
+        }
+
+        {# 头部页面信息 #}
+        $("#head_products_count").text(products_count);
+        $("#head_curPage").text(products_info_page['cur_page']);
+        $("#head_totalPage").text(products_info_page['total_page']);
+        $head_previous_page_link.attr("href", page_link_dict['previous_page_link']);
+        $head_next_page_link.attr("href", page_link_dict['next_page_link']);
+        {# 尾部页面信息 #}
+        $("#tail_products_count").text(products_count);
+        $("#tail_curPage").text(products_info_page['cur_page']);
+        $("#tail_totalPage").text(products_info_page['total_page']);
+        $tail_previous_page_link.attr("href", page_link_dict['previous_page_link']);
+        $tail_next_page_link.attr("href", page_link_dict['next_page_link']);
+        $tail_first_page_link.attr("href", page_link_dict['first_page_link']);
+        $tail_last_page_link.attr("href", page_link_dict['last_page_link']);
+    }
+    function set_sort(sorted_by, href_dict, searchType) {
+        $onSort_default.attr("href", href_dict['onSort_default']);
+        $onSort_asc.attr("href", href_dict['onSort_asc']);
+        $onSort_desc.attr("href", href_dict['onSort_desc']);
+
+        if(sorted_by === 'default') {
+            $onSort_default.attr("class", "selected").css("background", "#f60").css("color", "#FFFFFF");
+            $onSort_asc.attr("class", "");
+            $onSort_desc.attr("class", "");
+        }
+        else if(sorted_by === 'asc') {
+            $onSort_default.attr("class", "");
+            $onSort_asc.attr("class", "selected").css("background", "#f60").css("color", "#FFFFFF");
+            $onSort_desc.attr("class", "");
+        }
+        else if(sorted_by === 'desc') {
+            $onSort_default.attr("class", "");
+            $onSort_asc.attr("class", "");
+            $onSort_desc.attr("class", "selected").css("background", "#f60").css("color", "#FFFFFF");
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{
+  "126": {
+    "mailWebSite": "mail.126.com"
+  },
+  "163": {
+    "mailWebSite": "mail.163.com"
+  },
+  "sina": {
+    "mailWebSite": "mail.sina.com"
+  },
+  "qq": {
+    "mailWebSite": "mail.qq.com"
+  },
+  "foxmail": {
+    "mailWebSite": "mail.foxmail.com"
+  },
+  "sohu": {
+    "mailWebSite": "mail.sohu.com"
+  },
+  "yahoo": {
+    "mailWebSite": "login.yahoo.com"
+  }
+}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/usercenterViews.css' %}">
+{% endblock %}
+
+{% block title %}我的足迹——个人中心{% endblock %}
+
+{% block mainContent %}
+
+    <main id="main-content">
+        <div id="marginTopSep"></div>
+        <div id="contentContainer">
+            <div class="usercenterBox">
+                <div class="leftCategory">
+                    <ul class="categoryBox">
+                        <li class="categoryTitle">个人中心</li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_info' %}">账号信息</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_fav' %}">我的收藏</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_views' %}" style="color: red;">我的足迹</a>
+                        </li>
+                        <li class="categoryItem">
+                            <a class="categoryItemLink" href="{% url 'users:user_msg' %}">站内消息</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightContent">
+                    <div class="contentTitle">
+                        <p class="titleP">我的足迹</p>
+                        <p class="delAll">全部清空</p>
+                    </div>
+                    <div class="contentInfo">
+                        <table class="viewsTable">
+                            <thead class="viewsThead">
+                                <tr class="theadTr">
+                                    <th class="titleLinkTh">链接</th>
+                                    <th class="priceTh">价格</th>
+                                    <th class="viewsTimeTh">在售商城统计</th>
+                                    <th class="deleteViewsTh">删除记录</th>
+                                </tr>
+                            </thead>
+                            <tbody class="viewsTbody">
+                                {% for product_info in product_info_list %}
+                                    <tr class="viewsInfo">
+                                        <td class="viewsTitle">
+                                            <a target="_blank" class="viewsTitleLink"
+                                               href="{% url 'products:get_product_detail' %}" title="点击查看详情">
+                                                {{ product_info.product.name }}
+                                            </a>
+                                        </td>
+                                        <td class="viewsPrice">
+                                            ￥<span class="lowestPrice">{{ product_info.priceStatistics.lowest_price }}</span>起
+                                        </td>
+                                        <td class="viewsTime">{{ product_info.priceStatistics.mall_num }}家在售</td>
+                                        <td class="deleteViews">
+                                            {# 用ajax请求进行 #}
+                                            <a style="color: #198ef6;" name="{{ product_info.product.prd_serial_number }}">删除</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

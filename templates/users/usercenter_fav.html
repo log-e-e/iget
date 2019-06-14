@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/usercenter_fav.css' %}">
+{% endblock %}
+
+{% block title %}我的收藏——个人中心{% endblock %}
+
+{% block mainContent %}
+<main id="main-content">
+    <div id="marginTopSep"></div>
+    <div id="contentContainer">
+        <div class="usercenterBox">
+            <div class="leftCategory">
+                <ul class="categoryBox">
+                    <li class="categoryTitle">个人中心</li>
+                    <li class="categoryItem">
+                        <a class="categoryItemLink" href="{% url 'users:user_info' %}">账号信息</a>
+                    </li>
+                    <li class="categoryItem">
+                        <a class="categoryItemLink" href="{% url 'users:user_fav' %}" style="color: red;">我的收藏</a>
+                    </li>
+                    <li class="categoryItem">
+                        <a class="categoryItemLink" href="{% url 'users:user_views' %}">我的足迹</a>
+                    </li>
+                    <li class="categoryItem">
+                        <a class="categoryItemLink" href="{% url 'users:user_msg' %}">站内消息</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="rightContent">
+                <div class="contentTitle">
+                    <p class="titleP">我的收藏</p>
+                    <p class="delAll">全部清空</p>
+                </div>
+                <div class="contentInfo">
+                    <table class="favTable">
+                        <thead class="favThead">
+                            <tr class="thHead">
+                                <th class="thImg">图片</th>
+                                <th class="thTitle">名称</th>
+                                <th class="thPrice">价格</th>
+                                <th class="thMall">在售商城</th>
+                                <th class="thDelete">取消收藏</th>
+                            </tr>
+                        </thead>
+                        <tbody class="favTbody">
+                            {% for product_info in products_info %}
+                                <tr class="favItemInfo" id="{{ product_info.product.prd_serial_number }}">
+                                    <td class="itemImg">
+                                        <a target="_blank" class="favImgLink"
+                                           href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product_info.product.prd_serial_number }}"
+                                           title="点击查看详情">
+                                            <img class="favImg" src="{{ product_info.product.img_url }}" alt="图片">
+                                        </a>
+                                    </td>
+                                    <td class="itemTitle">
+                                        <a target="_blank" class="favTitleLink"
+                                           href="{% url 'products:get_product_detail' %}?prd_serial_number={{ product_info.product.prd_serial_number }}"
+                                           title="点击查看详情">
+                                            {{ product_info.product.name }}</a>
+                                    </td>
+                                    <td class="itemPrice">
+                                        ￥<span class="lowestPrice">{{ product_info.priceStatistics.lowest_price }}</span>起
+                                    </td>
+                                    <td class="itemMall">
+                                        <a class="itemMallLink">{{ product_info.priceStatistics.mall_num }}&nbsp;家在售</a>
+                                    </td>
+                                    <td class="itemDelete">
+                                        <a class="delFavBtn" name="{{ product_info.product.prd_serial_number }}">删除</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block myJs %}
+    <script>
+        $(document).ready(function () {
+            $favItem = $("tr.favItemInfo");
+            $("tr.favItemInfo a.delFavBtn").click(function () {
+                del_prd_serial_number = $(this).attr("name");
+                $.ajax({
+                    url: "{% url 'dataStatistics:ajax_delete_fav_prd' %}?prd_serial_number=" + del_prd_serial_number,
+                    type: 'get',
+                    dataType: 'json',
+                    cache: false,
+                    async: false,
+                    success: function (data) {
+                        if(data["is_completed"] === "true") {
+                            $("#" + del_prd_serial_number).remove();
+                            $.growl({title: "", message: "删除成功"});
+                        }
+                        else
+                            $.growl.error({title: "", message: "删除失败，请重试"});
+                    }
+                });
+            });
+            $("p.delAll").click(function () {
+                {% if products_length > 0 %}
+                    $.confirm({
+                        {# 官方文档给出的设置宽度：https://craftpip.github.io/jquery-confirm/#custom-width #}
+                        boxWidth: '20%',
+                        useBootstrap: false,
+                        title: "清空收藏",
+                        content: "确认删除所有收藏的产品？",
+                        type: "green",
+                        buttons: {
+                            ok: {
+                                text: "确认",
+                                btnClass: "btn-primary",
+                                keys: ["enter"],
+                                action: function () {
+                                    $.ajax({
+                                        url: "{% url 'dataStatistics:ajax_delete_all_fav_prd' %}",
+                                        type: 'get',
+                                        dataType: 'json',
+                                        cache: false,
+                                        async: false,
+                                        success: function (data) {
+                                            if(data['is_completed'] === "true") {
+                                                for(i = 0; i < $favItem.length; i++)
+                                                    $favItem[i].remove();
+                                                $.growl({title: "", message: "清除完毕"});
+                                            }
+                                            else
+                                                $.growl.error({title: "", message: "清除完毕"});
+                                        }
+                                    });
+                                }
+                            },
+                            cancel: {
+                                text: "取消",
+                                btnClass: "btn-primary"
+                            }
+                        }
+                    });
+                {% else %}
+                    $.growl.error({title: "", message: "抱歉，您还没有收藏任何产品"});
+                {% endif %}
+            });
+
+            {# 对比框 #}
+            $prd_compare_box = $("#prd_compare_box");
+            {#$hidden_compare = $("#hidden_compare");#}
+            $("#hidden_compare").click(function () {
+                $prd_compare_box.hide();
+            });
+            $to_top_img = $("#to_top_img");
+            $to_top_img.mouseenter(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+            }).mouseleave(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+            });
+        });
+    </script>
+{% endblock %}

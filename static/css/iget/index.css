@@ -1,0 +1,418 @@
+@charset "UTF-8";
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    font: 13px Arial 宋体;
+    text-align: center;
+    word-break: break-all;
+    word-wrap: break-word;
+    /*overflow: hidden;*/
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 2600px;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 2200px;
+    background-color: #F3F2F3;
+    /*border-bottom: 1px #dddddd solid;*/
+}
+/*中间内容容器*/
+#contentContainer {
+    width: 90%;
+    height: 2150px;
+    /*background-color: #fff;*/
+}
+
+/*大框架结构 start*/
+#ccLeftSection {
+    float: left;
+    width: 21%;
+    height: 2128px;
+    background-color: #FFF;
+    overflow: hidden;
+}
+#ccRightSection {
+    float: right;
+    width: 78%;
+    height: 2150px;
+    background-color: #FFF;
+}
+/*大框架结构 end*/
+
+
+/*局部框架结构 start*/
+/*ccLeftSection*/
+/*目录版块*/
+.typeCategory {
+    /*width: 280px;左右*/
+    width: 60%;
+    height: auto;
+    margin-bottom: 50px;
+    border-bottom: 1px #F3F2F3 solid;
+    /*margin-left: 20px;*/
+    /*border: 1px lightgray solid;*/
+}
+/*排行榜版块*/
+.rankBox {
+    width: 100%;
+    height: auto;
+    margin-top: 350px;
+    /*border: 1px #dddddd solid;*/
+}
+
+/*ccRightSection*/
+/*轮播图和用户板块*/
+#rotationAndUser {
+    width: 100%;
+    height: 320px;
+    margin-top: 10px;
+    background-color: lightgray;
+}
+.rotationChart {
+    float: left;
+    width: 100%;
+    height: 100%;
+    background-color: darkseagreen;
+}
+
+/*.userChart {*/
+    /*float: right;*/
+    /*width: 24%;*/
+    /*height: 100%;*/
+    /*background-color: lightskyblue;*/
+/*}*/
+
+/*商品推荐板块*/
+#prdRec {
+    width: 100%;
+    height: 1810px;
+    background-color: #F3F2F3;
+    margin-top: 10px;
+}
+/*局部框架结构 end*/
+
+/*局部框架结构详细设计 start*/
+/*笔记本分类版块*/
+.pcTypeTitle {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    /*text-align: right;*/
+    color: black;
+    border-bottom: 1px #F3F2F3 solid;
+}
+#pcTypeList {
+    width: 155px;
+    position: absolute;
+}
+ul.subMenu {
+    position: absolute;
+    display: none;
+    text-align: left;
+    width: 300px;
+    height: auto;
+    left: 155px;
+    top: 0;
+}
+ul.subMenu li.subMenuItem {
+    width: 60px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li.subMenuItem_pos {
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li.subMenuItem_cpu {
+    width: 110px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li.subMenuItem_hd {
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li.subMenuItem_grp {
+    width: 90px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li.subMenuItem_scr {
+    width: 70px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+}
+ul.subMenu li:hover {
+    background-color: #F3F2F3;
+}
+.subItemLink {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #5a5a5a;
+    font-size: 15px;
+    text-align: left;
+}
+.subItemLink:hover {
+    color: #f9513b;
+    text-decoration: underline;
+}
+.pcTypeItem {
+    display: block;
+    position: relative;
+    /*width: 100%;*/
+    height: 35px;
+    line-height: 35px;
+    font-size: 15px;
+    text-align: left;
+    border-top: 1px #F3F2F3 solid;
+}
+.pcTypeItem:hover {
+    cursor: pointer;
+    background-color: #F3F2F3;
+}
+ul#pcTypeList li.pcTypeItem:hover ul.subMenu {
+    display: block;
+    background-color: #F3F2F3;
+}
+.pcTypeItemLink {
+    display: inline-block;
+    width: 90%;
+    height: 35px;
+    line-height: 35px;
+    text-align: left;
+    font-size: 15px;
+    color: #5a5a5a;
+}
+.arrow {
+    display: inline-block;
+    width: auto;
+    height: 17.5px;
+    text-align: center;
+    color: #5a5a5a;
+    /*margin-left: 20px;*/
+}
+
+/*排行榜版块*/
+/*品牌排行榜*/
+.brandRank, .popularRank {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    /*border: 1px #dddddd solid;*/
+}
+.rankTitle, .rankTitleLink {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: black;
+    border-bottom: 2px #dddddd solid;
+}
+.rankTitleLink:hover {
+    color: red;
+}
+.brandRankList {
+    width: 100%;
+    height: auto;
+}
+.brandRankInfoItem {
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px #dddddd solid;
+}
+.brdNameLink {
+    color: #5a5a5a;
+}
+.brdNameLink:hover {
+    color: orangered;
+}
+/*热门笔记本排行榜版块*/
+.popularRankPrd {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.prdRankImgAndTitle {
+    /*display: inline-block;*/
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    /*text-align: center;*/
+    /*border-bottom: 0.5px #666666 dotted;*/
+}
+.imgLink {
+    /*display: inline-block;*/
+    float: left;
+    width: 50%;
+}
+.rankPrdImg {
+    width: 100px;
+    height: 80px;
+}
+.titleLink {
+    /*display: inline-block;*/
+    float: left;
+    width: 50%;
+    height: 80px;
+    color: #5a5a5a;
+    text-align: left;
+    font-size: 13px;
+}
+.titleLink:hover, .rankPrdImg:hover {
+    /*color: black;*/
+    text-decoration: underline;
+}
+.priceAndScore {
+    display: inline-block;
+    width: 100%;
+    height: 25px;
+    /*background-color: #f9513b;*/
+    border-bottom: 0.5px lightgray solid;
+}
+.priceBox {
+    /*display: inline-block;*/
+    float: left;
+    width: 48%;
+    height: 25px;
+    font-size: 9px;
+    /*line-height: 25px;*/
+}
+.scoreBox {
+    /*display: inline-block;*/
+    float: right;
+    width: 48%;
+    height: 25px;
+    font-size: 9px;
+    /*line-height: 25px;*/
+}
+.rankPrdPrice, .prdScore {
+    font-size: 16px;
+    color: red;
+}
+
+/*轮播图板块*/
+
+/*用户面板板块*/
+
+/*商品推荐板块: prdRec*/
+.prdRecSection {
+    width: 100%;
+    height: auto;
+    /*background-color: palegreen;*/
+}
+.headBox {
+    width: 100%;
+    height: 40px;
+    background-color: #F3F2F3;
+}
+.headTitle {
+    float: left;
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    font-size: 20px;
+}
+.headMore {
+    float: right;
+    width: 30%;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    font-size: 12px;
+}
+.moreLink, .moreOtherLink {
+    /*display: block;*/
+    color: red;
+    text-decoration: underline;
+}
+.moreLink:hover, .moreOtherLink:hover {
+    cursor: pointer;
+    text-shadow: 0.5px 0 #E51106;
+    /*font-size: 15px;*/
+    /*color: red;*/
+    /*text-decoration: underline;*/
+}
+.prdsBox {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+}
+.prdItem {
+    display: inline-block;
+    /*width: 220px;*/
+    width: 23.21%;
+    height: auto;
+    margin: 5px;
+    border: 1px #cacaca solid;
+    overflow: hidden;
+}
+.prdImg {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+.prdInfo {
+    text-align: left;
+}
+.prdTitleLink {
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    color: #5a5a5a;
+    font-size: 12px;
+}
+.prdTitleLink:hover {
+    text-decoration: underline;
+}
+.prdPrice {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    color: #5a5a5a;
+}
+.lowestPrice {
+    font-size: 20px;
+    color: red;
+}
+.mallNum, .addFav, .addCompare {
+    display: inline-block;
+    width: 31%;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    text-align: center;
+    color: #5a5a5a;
+    background-color: #FFF;
+    outline: none;
+    /*border: 0.5px #5a5a5a dotted;*/
+}
+.mallNum:hover, .addFav:hover, .addCompare:hover {
+    cursor: pointer;
+    color: #f9513b;
+}
+/*局部框架结构详细设计 end*/

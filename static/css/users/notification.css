@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 900px;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-bottom: 1px #dddddd solid;
+}
+/*中间内容容器*/
+#contentContainer {
+    width: 75%;
+    height: 450px;
+    background-color: #fff;
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.notificationHead {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #5A5A5A;
+    margin-top: 30px;
+    text-align: center;
+    background-color: #F3F2F3;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+}
+.notificationBox {
+    width: 100%;
+    height: 350px;
+    /*border-left: 2px #F3F2F3 solid;*/
+    /*border-right: 2px #F3F2F3 solid;*/
+    /*border-top: 1px gray solid;*/
+}
+.notificationInfoBox {
+    width: 100%;
+    height: 350px;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+    /*border-top: 1px gray solid;*/
+}
+.notificationContent {
+    width: 70%;
+    height: 80%;
+    text-align: center;
+}
+.notifyContent {
+    width: 100%;
+    height: 70%;
+    text-align: left;
+    font-size: 16px;
+}
+.notifyLine {
+    height: 40px;
+    width: 100%;
+}
+td.notifyCol {
+    text-align: left;
+}
+.loginLink {
+    color: #f9513b;
+    font-size: 18px;
+}
+p.resend_p {
+    font-size: 16px;
+    color: #E51106;
+    text-align: left;
+}
+#re_send_email {
+    color: #198ef6;
+    font-size: 16px;
+}
+#re_send_email:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.loginLink:hover {
+    cursor: pointer;
+    color: #E51106;
+}
+.notificationFoot {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: large;
+    color: #5A5A5A;
+    background-color: #F3F2F3;
+    border-left: 2px #F3F2F3 solid;
+    border-right: 2px #F3F2F3 solid;
+}

@@ -1,0 +1,232 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/chemail_newemail.css' %}">
+{% endblock %}
+
+{% block title %}更换邮箱——用户中心{% endblock %}
+
+{% block mainContent %}
+
+    <main id="main-content">
+        <div id="contentContainer">
+            <div class="chemailBox">
+                <div class="chemailHead">
+                    更换邮箱
+                </div>
+                <div class="chemailFormBox">
+                    <form id="chemailForm" class="chemailForm" autocomplete="off" method="post"
+                          action="{% url 'users:chemail' %}" onsubmit="return check_code();">
+                        {% csrf_token %}
+                        <div style="width: 90%;height: 30px;line-height: 30px;text-align: center;font-size: 13px;color: #7f8c8d;">
+                            为确保账户安全，请输入新邮箱并通过邮件验证码的校验以<span style="color: #E51106;">绑定新邮箱</span>
+                        </div>
+                        <table class="chemailTable">
+                            <tr class="inputLine">
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td colspan="4"> </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_hide_email"></label>
+                                    <label for="id_email" class="inputLabel">新邮箱：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input id="id_hide_email" type="text" name="replace_email" value="{{ request.user.email }}" hidden="hidden">
+                                    <input class="chemailInput" id="id_email" type="email" name="new_email"
+                                           autofocus="autofocus" value="" />
+                                </td>
+                                <td style="width: 66px;text-align: left;"></td>
+                                <td class="errorMsgTd emailError">
+                                    <span class="emailError" style="color: #E51106;font-size: 12px;"></span>
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_verifycode" class="inputLabel">验证码：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input class="chemailInput" id="id_verifycode" type="text" name="verifycode" value="" />
+                                </td>
+                                <td style="width: 66px;text-align: left;">
+                                    <span id="getCodeLink" class="getCodeLink" title="点击以获取验证码">获取验证码</span>
+                                    <span id="sending" hidden="hidden" style="color: #E51106;font-size: 12px;">发送中...</span>
+                                    &nbsp;&nbsp;
+                                    <span id="codeError" class="codeError" style="color: #E51106; font-size: 12px;"></span>
+                                </td>
+                                <td class="errorMsgTd codeError">
+                                    <span class="codeError" style="color: #E51106;font-size: 12px;"></span>
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td></td>
+                                <td class="inputSub">
+                                    <input class="chemailSubmitBtn" id="chemailSubmitBtn" type="submit"  value="提交" />
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="chemailFoot">
+                    易得比价网为您选购笔记本电脑提供优质服务!
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+{#    <script src="{% static 'js/users/chemail.js' %}"></script>#}
+<script>
+    $emailInput = $("#id_email");
+    $(document).ready(function () {
+        $chemailform = $('#chemailForm');
+        $codeInput = $("#id_verifycode");
+        $chemailSubBtn = $("#chemailSubmitBtn");
+        $oldEmail = $("#id_hide_email");
+        $emailErrorSpan = $("span.emailError");
+        $codeError = $("#codeError");
+        $getCodeLink = $("#getCodeLink");
+        $codeSendingSpan = $("#sending");
+
+        $to_top_img = $("#to_top_img");
+            $to_top_img.mouseenter(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_in.png' %}");
+            }).mouseleave(function () {
+                $to_top_img.attr("src", "{% static 'media/system_default/back_to_top_out.png' %}");
+            });
+        $("#hidden_compare").click(function () {
+                $prd_compare_box.hide();
+    });
+        $chemailform.validate({
+            errorPlacement: function(error, element){
+                element.parent("td").next("td").next("td").text("");
+                error.appendTo(element.parent("td").next("td").next("td"));
+            },
+            onkeyup: false,
+            rules: {
+                new_email: {
+                    required: true,
+                    checkEmail: true,
+                    remote: {
+                        url: "{% url 'users:ajax_check_email_registered_activated' %}",
+                        type: "get",
+                        dataType: "json",
+                        data: {
+                            "email": function () {
+                                return $emailInput.val();
+                            }
+                        },
+                        dataFilter: function (data) {
+                            data = JSON.parse(data);
+                            return data["registered"] !== "true";
+                        },
+                    }
+                },
+                verifycode: {
+                    required: true,
+                    rangelength: [5, 8],
+                },
+            },
+            messages: {
+                new_email: {
+                    required: "必填项",
+                    email: "邮箱格式不正确",
+                    remote: "邮箱已被注册",
+                },
+                verifycode: {
+                    required: "必填项",
+                    rangelength: "无效验证码",
+                },
+            },
+        });
+        {#监听用户是否点击修改邮箱链接，若点击链接则发送ajax异步请求：向对应邮箱发送验证码#}
+        $getCodeLink.click(function () {
+            if ($emailInput.val() === "") {
+                $emailErrorSpan.text("必填项");
+                return false;
+            }
+            else if ($emailInput.val() === $oldEmail.val()) {
+                $emailErrorSpan.text("不能与旧邮箱相同");
+                return false;
+            }
+            else {
+                $getCodeLink.hide();
+                $codeSendingSpan.show();
+                $codeInput.val("");
+                var formData = new FormData();
+                formData.append("email", $emailInput.val());
+                formData.append("verify_type", 3);
+                $.growl({title: "", message: "请耐心等待，邮件发送中..."});
+                $.ajax({
+                    url: "{% url 'users:ajax_send_email' %}?email=" + $emailInput.val() + "&verify_type=3",
+                    type: 'get',
+                    cache: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        $codeSendingSpan.hide();
+                        $getCodeLink.show().text("重新发送？");
+                        if (data.completed === "true") {
+                            $.growl({title: "", message: data.msg});
+                        }
+                        else {
+                            $.growl.error({title: "", message: data.msg});
+                        }
+                    },
+                });
+            }
+        });
+    });
+    {#自定义正则表达式验证方法#}
+    $.validator.addMethod("checkEmail", function (value, element) {
+        var checkEmail = /^[a-z0-9._]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+        return this.optional(element) || (checkEmail.test(value));
+    }, "邮箱格式不正确");
+    {#提交之前校验验证码，验证码正确则提交表单#}
+    var go_submit = false;
+    function check_code() {
+        $codeError.text("");
+        $chemailSubBtn.attr("disabled", true);
+        {#此处对输入框进行基本的校验，校验通过才能发送ajax请求#}
+        if ($codeInput.val() === "") {
+            $codeError.text("必填项");
+        }
+        else if ($codeInput.val().length < 5 || $codeInput.val().length > 8) {
+            $codeError.text("无效验证码");
+        }
+        else if ($emailInput.val() !== "" && $emailInput.val() !== "{{ request.user.email }}") {
+            $.ajax({
+            url: "{% url 'users:ajax_check_code' %}",
+            type: 'get',
+            dataType: 'json',
+            {#关闭异步#}
+            async: false,
+            cache: false,
+            data: {
+                "email": function () {
+                    return $emailInput.val();
+                },
+                "code": function () {
+                    return $codeInput.val();
+                },
+            },
+            success: function (data) {
+                go_submit = (data["code_valid"] === "true");
+                if (go_submit !== true) {
+                    $chemailSubBtn.attr("disabled", false);
+                    $codeError.text("无效验证码");
+                }
+            },
+        });
+        }
+        if (go_submit === false)
+            $chemailSubBtn.attr("disabled", false);
+        return go_submit;
+    }
+</script>
+{% endblock %}

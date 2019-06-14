@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block myCssLink %}
+    <link rel="stylesheet" href="{% static 'css/users/register.css' %}">
+{% endblock %}
+
+{% block title %}注册{% endblock %}
+
+{% block mainContent %}
+    <main id="main-content">
+        <div id="contentContainer">
+            <div class="registerBox">
+                <div class="registerHead">
+                    用户注册
+                </div>
+                <div class="registerFormBox">
+                    <form id="registerForm" class="registerForm" action="{% url 'users:register' %}" method="post" autocomplete="off">
+                        {% csrf_token %}
+                        <table class="regTable">
+                            <tr class="inputLine">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_email" class="inputLabel">邮箱：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input class="regInput" id="id_email" type="email" name="email"
+                                           value="" autofocus="autofocus" />
+                                </td>
+                                <td class="inputErrorBox">
+                                    <p class="inputError">
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_password1" class="inputLabel">密码：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input class="regInput" id="id_password1" type="password" name="password1"
+                                           value="" />
+                                </td>
+                                <td class="inputErrorBox">
+                                    <p class="inputError">
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td class="inputTitle">
+                                    <label for="id_password2" class="inputLabel">确认密码：</label>
+                                </td>
+                                <td class="inputContent">
+                                    <input class="regInput" id="id_password2" type="password" name="password2"
+                                           value="" />
+                                </td>
+                                <td class="inputErrorBox">
+                                    <p class="inputError">
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="inputLine">
+                                <td></td>
+                                <td class="inputSub">
+                                    <input class="regSubmitBtn" type="submit" value="注册" title="点击注册" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="registerFoot">
+                    易得比价网为您选购笔记本电脑提供优质服务!
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block myJs %}
+    <script>
+        $emailInput = $("#id_email");
+        $(document).ready(function () {
+            $("#registerForm").validate({
+                errorPlacement: function(error, element){
+                    error.appendTo(element.parent("td").next("td").children("p.inputError"));
+                },
+                {# 设置onkeyup:false的目的是使得在失去焦点（输入光标）后再进行校验，防止每次输入字符时都发送ajax请求， #}
+                onkeyup: false,
+                rules: {
+                    email: {
+                        required: true,
+                        checkEmail: true,
+                        remote: {
+                            url: "{% url 'users:ajax_check_email_registered_activated' %}?email=" + $emailInput.val(),
+                            type: "get",
+                            dataType: "json",
+                            dataFilter: function (data) {
+                                data = JSON.parse(data);
+                                return data["registered"] !== "true";
+                            },
+                        },
+                    },
+                    password1: {
+                        required: true,
+                        rangelength: [6, 16],
+                    },
+                    password2: {
+                        required: true,
+                        equalTo: "#id_password1",
+                    },
+                },
+                messages: {
+                    email: {
+                        required: "必填项",
+                        email: "邮箱格式不正确",
+                        remote: "邮箱已被注册",
+                    },
+                    password1: {
+                        required: "必填项",
+                        rangelength: "密码长度为6至16个字符",
+                    },
+                    password2: {
+                        required: "必填项",
+                        equalTo: "确认密码与密码不一致",
+                    },
+                },
+            });
+        });
+        {#自定义正则表达式验证方法#}
+        $.validator.addMethod("checkEmail", function (value, element) {
+            const checkEmail = /^[a-z0-9._]+@([a-z0-9]+\.)+[a-z]{2,4}$/i;
+            return this.optional(element) || (checkEmail.test(value));
+        }, "邮箱格式不正确");
+    </script>
+{% endblock %}

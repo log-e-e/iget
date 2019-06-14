@@ -1,0 +1,309 @@
+@charset "UTF-8";
+
+
+/*全局*/
+#global-Container {
+    width: 100%;
+    height: 2600px;
+}
+dt, dd {
+    display: inline-block;
+}
+/*中间部分的大框架*/
+#main-content {
+    width: 100%;
+    height: 2200px;
+    margin: 0 auto;
+    /*background-color: #fff;*/
+    background-color: #F3F2F3;
+    /*border-bottom: 1px #dddddd solid;*/
+}
+#marginTopSep {
+    width: 100%;
+    height: 20px;
+    background-color: #F3F2F3;
+}
+/*中间内容容器基础布局 start*/
+#contentContainer {
+    width: 90%;
+    height: 2130px;
+    background-color: #fff;
+    /*background-color: lightgray;*/
+    /*border-bottom: 2px #E51106 solid;*/
+}
+.leftSideBar {
+    float: left;
+    width: 19%;
+    height: 100%;
+    /*margin-right: 10px;*/
+    /*background-color: #5a5a5a;*/
+    border: 0.5px #F77844 solid;
+}
+.leftSideBar p.sideBarTitle {
+    /*margin-top: 20px;*/
+    width: 97%;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+    background-color: #dddddd;
+}
+.leftSideBar ul.confWordList {
+    width: 97%;
+    height: auto;
+}
+ul.confWordList li.confWordItem {
+    width: 100%;
+    height: auto;
+    border: 0.5px #F3F2F3 solid;
+}
+li.confWordItem p.confWordTitle {
+    margin-top: 2px;
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    font-size: 16px;
+    background-color: #ececec;
+}
+li.confWordItem div.confWordContent {
+    text-align: left;
+    color: #5a5a5a;
+}
+.rightContent {
+    float: right;
+    width: 80%;
+    height: 100%;
+    /*background-color: #5a5a5a;*/
+}
+
+.filterDiv {
+    width: 100%;
+    height: 26%;
+    /*background-color: #DF4100;*/
+    margin-bottom: 20px;
+    border: 0.5px #F77844 solid;
+    /*border-radius:4px;*/
+    font-size: 12px
+}
+.select {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: left;
+    /*background-color: lightblue;*/
+}
+.select li{
+    width: 90%;
+    height: auto;
+    /*line-height: 30px;*/
+    list-style: none;
+    padding: 10px 0 5px 100px;
+    /*background-color: lightblue;*/
+}
+.select .selectList{
+    border-bottom: 0.5px lightgray dashed;
+}
+.select dl{
+    zoom: 1;
+    position: relative;
+    height: 24px;
+    line-height: 24px;
+}
+.select dl:after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden
+}
+.select dt{
+    width: 100px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 0;
+    left: -100px;
+    text-align: left;
+    color: #666;
+    height: 24px;
+    line-height: 24px;
+}
+.select dd{
+    float: left;
+    display: inline;
+    margin: 0 0 5px 5px;
+}
+.select a{
+    display: inline-block;
+    white-space: nowrap;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #5a5a5a;
+    border-radius: 2px;
+}
+.select a:hover{
+    cursor: pointer;
+    color: #f60;
+    background-color: #f3edc2;
+}
+.select .selected a{
+    color: #fff;
+    background-color: #f60;
+}
+.selectResult dt{
+    font-weight: bold;
+}
+.selectNone{
+    color: #999;
+}
+.select .selectResult a{
+    padding-right: 20px;
+    text-align: center;
+    background: #f60 url("close.gif") right 9px no-repeat;
+}
+.select .selectResult a:hover{
+    background-position: right -15px;
+}
+
+dd.selected {
+    background-color: #f60;
+}
+
+.searchResultDiv {
+    width: 100%;
+    height: 74%;
+    /*background-color: #DF4100;*/
+    /*border: 0.5px #F77844 solid;*/
+}
+.resultHeadNav {
+    width: 100%;
+    height: 35px;
+    background-color: #dddddd;
+    /*border: 0.5px #F77844 solid;*/
+}
+div.resultSort {
+    float: left;
+}
+div.resultSort a {
+    color: #5A5A5A;
+    background: #DDDDDD;
+}
+div.resultSort a.selected {
+    background: #f60;
+}
+div.resultSort a:hover {
+    background: #f3edc2;
+}
+.resultNumAndTurnPage {
+    float: right;
+}
+.resultSort dl dt, .resultSort dl dd {
+    height: 35px;
+    line-height: 35px;
+    display: inline-block;
+}
+.resultNumAndTurnPage dl dt, .resultNumAndTurnPage dl dd {
+    height: 35px;
+    line-height: 35px;
+    display: inline-block;
+}
+.resultSort dl dd a, .resultNumAndTurnPage dl dd a {
+    display: inline-block;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+}
+.resultSort dl dd a:hover {
+    background-color: #f3edc2;
+}
+.resultNumAndTurnPage dl dd a:hover {
+    background-color: #F77844;
+}
+div.resultTailNav {
+    width: 100%;
+    height: 35px;
+    background-color: #dddddd;
+}
+div.resultTailNav a {
+    color: #5A5A5A;
+}
+div.resultTailNav a:hover {
+    text-decoration: underline;
+    color: #E51106;
+}
+.pageNav dl dt {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+}
+.pageNav dl dd {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 5px;
+}
+.resultContent {
+    text-align: center;
+    width: 100%;
+    height: 1410px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0.5px #F77844 dashed;
+    background-color: #FFF;
+}
+.prdItem {
+    display: inline-block;
+    width: 220px;
+    /*width: 23.21%;*/
+    height: auto;
+    margin: 5px;
+    margin-left: 12px;
+    border: 1px #cacaca solid;
+    overflow: hidden;
+}
+.prdImg {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+.prdInfo {
+    text-align: left;
+}
+.prdTitleLink {
+    /*height: 50px;*/
+    /*line-height: 10px;*/
+    text-align: left;
+    color: #5a5a5a;
+    font-size: 12px;
+}
+.prdTitleLink:hover {
+    text-decoration: underline;
+}
+.prdPrice {
+    display: block;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #5a5a5a;
+}
+.lowestPrice {
+    font-size: 20px;
+    color: red;
+}
+.mallNum, .addFav, .addCompare {
+    display: inline-block;
+    width: 31%;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    text-align: center;
+    color: #5a5a5a;
+    background-color: #FFF;
+    outline: none;
+    /*border: 0.5px #5a5a5a dotted;*/
+}
+.mallNum:hover, .addFav:hover, .addCompare:hover {
+    color: #f9513b;
+}
